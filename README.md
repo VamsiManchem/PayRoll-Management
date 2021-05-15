@@ -8,7 +8,7 @@ Experss version 4.17.1
 
 ## Node
 
-Node version 
+Node version 12.11.1
 
 ## MongoDB
 
