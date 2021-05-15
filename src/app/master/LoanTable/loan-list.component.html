@@ -1,0 +1,56 @@
+
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="loans.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let loan of loans">
+    <mat-expansion-panel-header>
+      {{ loan.name }}
+    </mat-expansion-panel-header>
+    <p>{{ loan.description }}</p>
+    <p>{{ loan.type }}</p>
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/editloan', loan.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(loan.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<div style="text-align:center"> 
+  <h1>
+    LIST OF LOANS
+  </h1>
+</div>
+
+
+ <div class="mat-elevation-z2">
+   <table>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Loan Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Loan Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans">
+          <td>{{ loan.name }}</td>
+          <td>{{ loan.description }}</td>
+          <td>{{ loan.type }}</td>
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/editloan', loan.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator [length]="totalLoans" [pageSize]="loansPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="loans.length > 0"></mat-paginator>
+    <p class="info-text mat-body-1" *ngIf="loans.length <= 0 && !isLoading">No loans added yet!</p>
+  </div>
+ 
+
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createloan" routerLinkActive="mat-accent">ADD NEW LOAN</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+
+
+

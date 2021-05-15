@@ -1,0 +1,45 @@
+
+<mat-card>
+    <h1> PAY GENERATION </h1>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <form (submit)="onSavePayTrans(paytransForm)" #paytransForm="ngForm" *ngIf="!isLoading">
+        <mat-form-field>
+            <mat-select name="Month" [ngModel]="paytrans?.Month"  #Month="ngModel" placeholder="Month">
+                <mat-option value="Jan">Jan</mat-option>
+                <mat-option value="Feb">Feb</mat-option>
+                <mat-option value="Mar">Mar</mat-option>
+                <mat-option value="Apr">Apr</mat-option>
+                <mat-option value="May">May</mat-option>
+                <mat-option value="Jun">Jun</mat-option>
+                <mat-option value="Jul">Jul</mat-option>
+                <mat-option value="Aug">Aug</mat-option>
+                <mat-option value="Sep">Sep</mat-option>
+                <mat-option value="Oct">Oct</mat-option>
+                <mat-option value="Nov">Nov</mat-option>
+                <mat-option value="Dec">Dec</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      
+        <mat-form-field>
+
+            <mat-label>Year</mat-label>
+                <input  name="Year" [ngModel]="paytrans?.Year"  #Year="ngModel" matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Year"  required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+   
+        <button mat-raised-button color="primary" type="submit"> GO </button>
+        <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+    </form>
+   
+    <!-- <button mat-raised-button color="primary" position= "centre" routerLink="/createpaytransaction" routerLinkActive="mat-accent">ADD Pay Transaction</button> -->
+   
+</mat-card>

@@ -1,0 +1,49 @@
+
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="basictypes.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let basictype of basictypes">
+    <mat-expansion-panel-header>
+      {{ basictype.title }}
+    </mat-expansion-panel-header>
+    <p>{{ dept.content }}</p>
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/editbasictype', basictype.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(dept.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<div style="text-align:center"> 
+  <h1>
+    BASIC TYPE LIST
+  </h1>
+</div>
+
+
+ <div class="mat-elevation-z2">
+   <table>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Basic Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let basictype of basictypes">
+          <td>{{ basictype.title }}</td>
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/editbasictype', basictype.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator [length]="totalBasictypes" [pageSize]="basictypesPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="basictypes.length > 0"></mat-paginator>
+    <p class="info-text mat-body-1" *ngIf="basictypes.length <= 0 && !isLoading">No basic type added yet!</p>
+  </div>
+
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createbasictype" routerLinkActive="mat-accent">ADD NEW BASIC TYPE</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+
+

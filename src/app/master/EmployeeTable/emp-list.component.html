@@ -1,0 +1,338 @@
+<!-- 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="emps.length > 0 && !isLoading">
+    
+
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/editemp', emp.id]">EDIT</a>
+       <button mat-button color="warn" (click)="onDelete(emp.id)">DELETE</button> 
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> 
+
+ class="col col-xs-3"
+[(ngModel)]="searchText"
+-->
+
+
+
+<div style="text-align:center"> 
+  <h1>
+    LIST OF MSQAA EMPLOYEES
+  </h1>
+</div>
+
+<div class="search-employee">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search Employee Name Here">
+</div>
+
+ <div >
+   <table class="mat-elevation-z8">
+        <tr>
+              <th>Employee Name</th>
+              <th>Employee Number</th>
+              <th >Basic Type</th>
+              <th>Employee Type</th>
+              <th>Department</th>
+              <th>Desig</th>
+              <th>Group</th>
+              <th>Gender</th>
+              <th>DOB</th>
+              <th>DOJ</th>
+              <th>DONI</th>
+              <th>DOR</th>
+              <th>PAN No.</th>
+              <th>GPF No.</th>
+              <th>NPS No.</th>
+              <th>Aadhar No.</th>
+
+              <th>Bank Name</th>
+              <th>Bank Acc No.</th>
+              <th>IFSC</th>
+
+              <th>Pay Level</th>
+              <th>Cell No</th>
+              <th>Basic Pay</th>
+              <th>Govt.Qtrs</th>
+              <th>Medical Status</th>
+              <th>Ex-Service</th>
+              <th>PTAX</th>
+              <th>CGEGIS</th>
+              <th>DA</th>
+              <th>DA Amount</th>
+              <th>HRA</th>
+              <th>TA</th>
+              <th>DA on TA</th>
+              <!-- <th>CGHS</th> -->
+              <th>NPS Subscription</th>
+              <th>Remarks</th>
+
+              <th>Status</th>
+              <th>Effec Date</th>
+
+              <th>HBA Loan</th>
+              <th>HBA Type</th>
+              <th>HBA Loan Amount</th>
+              <th>HBA Inst No</th>
+              <th>HBA Inst Amount</th>
+              <th>HBA Bal</th>
+              <th>HBA Last Inst</th>
+              <th>HBA Lpaid Date</th>
+              <th>HBA Remarks</th>
+              <th>HBA Start Date</th>
+              <th>HBA Status</th>
+
+              
+              <th>MC Loan</th>
+              <th>MC Type</th>
+              <th>MC Loan Amount</th>
+              <th>MC Inst No</th>
+              <th>MC Inst Amount</th>
+              <th>MC Bal</th>
+              <th>MC Last Inst</th>
+              <th>MC Lpaid Date</th>
+              <th>MC Remarks</th>
+              <th>MC Start Date</th>
+              <th>MC Status</th>
+              
+              <th>PC Loan</th>
+              <th>PC Type</th>
+              <th>PC Loan Amount</th>
+              <th>PC Inst No</th>
+              <th>PC Inst Amount</th>
+              <th>PC Bal</th>
+              <th>PC Last Inst</th>
+              <th>PC Lpaid Date</th>
+              <th>PC Remarks</th>
+              <th>PC Start Date</th>
+              <th>PC Status</th>
+
+              <th>CAR Loan</th>
+              <th>CAR Type</th>
+              <th>CAR Loan Amount</th>
+              <th>CAR Inst No</th>
+              <th>CAR Inst Amount</th>
+              <th>CAR Bal</th>
+              <th>CAR Last Inst</th>
+              <th>CAR Lpaid Date</th>
+              <th>CAR Remarks</th>
+              <th>CAR Start Date</th>
+              <th>CAR Status</th>
+
+              <th>GPF Loan</th>
+              <th>GPF Type</th>
+              <th>GPF Loan Amount</th>
+              <th>GPF Inst No</th>
+              <th>GPF Inst Amount</th>
+              <th>GPF Bal</th>
+              <th>GPF Last Inst</th>
+              <th>GPF Lpaid Date</th>
+              <th>GPF Remarks</th>
+              <th>GPF Start Date</th>
+              <th>GPF Status</th>
+
+              <th>Other Loan</th>
+              <th>Other Type</th>
+              <th>Other Loan Amount</th>
+              <th>Other Inst No</th>
+              <th>Other Inst Amount</th>
+              <th>Other Bal</th>
+              <th>Other Last Inst</th>
+              <th>Other Lpaid Date</th>
+              <th>Other Remarks</th>
+              <th>Other Start Date</th>
+              <th>Other Status</th>
+
+              <th>GPF Sub</th>
+              <th>GPF Rec</th>
+              <th>NPS Sub</th>
+              <th>NPS Rec</th>
+              <th>IT</th>
+              <th>4% Cess</th>
+              <th>Misc Rec</th>
+              <th>HRA%</th>
+              <th>HRA Amount</th>
+              <th>Water</th>
+              <th>Elec Bill</th>
+              <th>CGHS</th>
+              <th>Misc Allow</th>
+
+              <th>DLOMI</th>
+              <th>Welfare</th>
+              <th>DRDL ECSS</th>
+              <th>CQA(L)</th>
+              <th>Offc Rec Misc</th>
+              <th>Offc Rec Date</th>
+
+              <th>Gross Pay</th>
+              <th>Total Deduction</th>
+              <th>Net Pay</th>
+              <th>Total Offc Rec</th>
+              <th>To Bank Amount</th>
+              
+              <th>Action</th>
+        </tr>
+        
+      <tbody>
+        <tr *ngFor="let emp of emps | filter:searchText">
+        
+          <td>{{ emp.empname }}</td>
+          <td>{{ emp.empno }}</td>
+          <td>{{ emp.basictype }}</td>
+          <td>{{ emp.emptype }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.designation }}</td>
+          <td>{{ emp.group }}</td>
+          <td>{{ emp.gender }}</td>
+          <td>{{ emp.dob | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.doj | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.doni | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.dor | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.pan }}</td>
+          <td>{{ emp.gpf }}</td>
+          <td>{{ emp.nps }}</td>
+          <td>{{ emp.aadharno }}</td>
+          
+          <td>{{ emp.bankname }}</td>
+          <td>{{ emp. bankaccountno }}</td>
+          <td>{{ emp.ifsccode }}</td>
+
+          <td>{{ emp.paylevel }}</td>
+          <td>{{ emp.cellno }}</td>
+          <td>{{ emp.basicpay }}</td>
+          <td>{{ emp.govtqurters }}</td>
+          <td>{{ emp.medicalstatus }}</td>
+          <td>{{ emp.exservice }}</td>
+          <td>{{ emp.ptax }}</td>
+          <td>{{ emp.cgegis }}</td>
+          <td>{{ emp.da }}</td>
+          <td>{{ emp.daamt }}</td>
+          <td>{{ emp.hra }}</td>
+          <td>{{ emp.hraamt }}</td>
+          <td>{{ emp.ta }}</td>
+          <td>{{ emp.daonta }}</td>
+         <!--  <td>{{ emp.noncghs }}</td> -->
+          <td>{{ emp.npssubscription }}</td>
+          <td>{{ emp.remarks }}</td>
+
+          <td>{{ emp.status }}</td>
+          <td>{{ emp.effectivedate | date: "dd-MMM-yyyy" }}</td>
+
+          <td>{{ emp.HBAloan }}</td>
+          <td>{{ emp.HBAtype }}</td>
+          <td>{{ emp.HBAloanamt }}</td>
+          <td>{{ emp.HBAinstno }}</td>
+          <td>{{ emp.HBAinstamt }}</td>
+          <td>{{ emp.HBAbal }}</td>
+          <td>{{ emp.HBAlastinst }}</td>
+          <td>{{ emp.HBAlastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.HBAremarks }}</td>
+          <td>{{ emp.HBAstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.HBAstatus }}</td>
+
+          <td>{{ emp.MCloan }}</td>
+          <td>{{ emp.MCtype }}</td>
+          <td>{{ emp.MCloanamt }}</td>
+          <td>{{ emp.MCinstno }}</td>
+          <td>{{ emp.MCinstamt }}</td>
+          <td>{{ emp.MCbal }}</td>
+          <td>{{ emp.MClastinst }}</td>
+          <td>{{ emp.MClastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.MCremarks }}</td>
+          <td>{{ emp.MCstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.MCstatus }}</td>
+
+          <td>{{ emp.PCloan }}</td>
+          <td>{{ emp.PCtype }}</td>
+          <td>{{ emp.PCloanamt }}</td>
+          <td>{{ emp.PCinstno }}</td>
+          <td>{{ emp.PCinstamt }}</td>
+          <td>{{ emp.PCbal }}</td>
+          <td>{{ emp.PClastinst }}</td>
+          <td>{{ emp.PClastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.PCremarks }}</td>
+          <td>{{ emp.PCstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.PCstatus }}</td>
+
+          <td>{{ emp.CARloan }}</td>
+          <td>{{ emp.CARtype }}</td>
+          <td>{{ emp.CARloanamt }}</td>
+          <td>{{ emp.CARinstno }}</td>
+          <td>{{ emp.CARinstamt }}</td>
+          <td>{{ emp.CARbal }}</td>
+          <td>{{ emp.CARlastinst }}</td>
+          <td>{{ emp.CARlastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.CARremarks }}</td>
+          <td>{{ emp.CARstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.CARstatus }}</td>
+
+          <td>{{ emp.GPFloan }}</td>
+          <td>{{ emp.GPFtype }}</td>
+          <td>{{ emp.GPFloanamt }}</td>
+          <td>{{ emp.GPFinstno }}</td>
+          <td>{{ emp.GPFinstamt }}</td>
+          <td>{{ emp.GPFbal }}</td>
+          <td>{{ emp.GPFlastinst }}</td>
+          <td>{{ emp.GPFlastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.GPFremarks }}</td>
+          <td>{{ emp.GPFstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.GPFstatus }}</td>
+
+          <td>{{ emp.OTHERloan }}</td>
+          <td>{{ emp.OTHERtype }}</td>
+          <td>{{ emp.OTHERloanamt }}</td>
+          <td>{{ emp.OTHERinstno }}</td>
+          <td>{{ emp.OTHERinstamt }}</td>
+          <td>{{ emp.OTHERbal }}</td>
+          <td>{{ emp.OTHERlastinst }}</td>
+          <td>{{ emp.OTHERlastdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.OTHERremarks }}</td>
+          <td>{{ emp.OTHERstartdate | date: "dd-MMM-yyyy" }}</td>
+          <td>{{ emp.OTHERstatus }}</td>
+
+          <td>{{ emp.gpfsub }}</td>
+          <td>{{ emp.gpfrec }}</td>
+          <td>{{ emp.npssub }}</td>
+          <td>{{ emp.npsrec }}</td>
+          <td>{{ emp.it }}</td>
+          <td>{{ emp.cess }}</td>
+          <td>{{ emp.misc1 }}</td>
+          <td>{{ emp.homerent }}</td>
+          <td>{{ emp.water }}</td>
+          <td>{{ emp.elec }}</td>
+          <td>{{ emp.cghs }}</td>
+          <td>{{ emp.misc1Alw }}</td>
+
+          <td>{{ emp.dlomi }}</td>
+          <td>{{ emp.welfare }}</td>
+          <td>{{ emp.DRDLEcss }}</td>
+          <td>{{ emp.cqa }}</td>
+          <td>{{ emp.OfrMisc1 }}</td>
+          <td>{{ emp.OffRecvdate | date: "dd-MMM-yyyy" }}</td>
+
+          <td>{{ emp.grosspay }}</td>
+          <td>{{ emp.tdeduction }}</td>
+          <td>{{ emp.netpay }}</td>
+          <td>{{ emp.toffcrec }}</td>
+          <td>{{ emp.tobnkamt }}</td>
+
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/editemp', emp.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+   <mat-paginator [length]="totalEmps" [pageSize]="empsPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="emps.length > 0"></mat-paginator>
+    <p class="info-text mat-body-1" *ngIf="emps.length <= 0 && !isLoading">No employee type added yet!</p>
+  </div> 
+
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createemp" routerLinkActive="mat-accent">ADD NEW EMPLOYEE</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+
+
+
+

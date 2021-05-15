@@ -1,0 +1,209 @@
+
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+	<form (submit)="onSaveItnewemp(itnewempForm)" #itnewempForm="ngForm" *ngIf="!isLoading">
+        <h1> IT NEW EMPLOYEE GROSS AND SAVINGS DETAILS </h1>
+		<mat-tab-group>
+			<mat-tab label="Employee Details">
+
+                  <div>
+		            <mat-form-field>
+                        <mat-label> Month: </mat-label>
+                        <input  name="month" [ngModel]="itnewemp?.month"  #month="ngModel" [max]="maxDate" matInput [matDatepicker]="picker1"  required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker1">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                  
+		            <mat-form-field>
+                        <mat-label> Year: </mat-label>
+                        <input  name="year" [ngModel]="itnewemp?.year"  #year="ngModel" [max]="maxDate" matInput [matDatepicker]="picker2"  required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>  
+                  </div>
+
+				  <div>
+					<mat-form-field>
+						  <input type="text" name="empno" [ngModel]="itnewemp?.empno"  #empno="ngModel" matInput placeholder="Emp No" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				    <mat-form-field>
+                        <input type="text" name="empname" [ngModel]="itnewemp?.empname"  #empname="ngModel" matInput placeholder="Emp Name" required minlength="0">
+                    </mat-form-field>
+				  </div>
+
+				  <div>
+					  <mat-form-field>
+                        <mat-select name="designation" [ngModel]="itnewemp?.designation"  #designation="ngModel" placeholder="Designation (Full Name)" required minlength="0">
+                            <mat-option *ngFor="let desig of desigs" [value]="desig.title">{{ desig.title }}</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <mat-select name="emptype" [ngModel]="itnewemp?.emptype"  #emptype="ngModel" placeholder="Employee Type" required minlength="0">
+                            <mat-option *ngFor="let emptype of emptypes" [value]="emptype.title">{{ emptype.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+
+                <div>
+					<mat-form-field>
+						<mat-select name="group" [ngModel]="itnewemp?.group"  #group="ngModel" placeholder="Group" required minlength="0">
+                            <mat-option *ngFor="let group of groups" [value]="group.title">{{ group.title }}</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<mat-form-field>
+                        <mat-select name="basictype" [ngModel]="itnewemp?.basictype"  #basictype="ngModel" placeholder="Basic Type" required minlength="0">
+                            <mat-option *ngFor="let basictype of basictypes" [value]="basictype.title">{{ basictype.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+            </mat-tab>
+
+            <mat-tab label="Suplee Payments">
+                <div>
+                    <mat-form-field>
+                        <mat-select name="paylevel" [ngModel]="itnewemp?.paylevel"  #paylevel="ngModel" placeholder="Pay level" required minlength="0">
+                            <mat-option *ngFor="let paymatrix of LevelNoList" [value]="paymatrix">{{ paymatrix }}</mat-option>
+                         </mat-select>
+                    </mat-form-field>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                    <mat-form-field>
+                        <mat-select name="cellno" [ngModel]="itnewemp?.cellno"  #cellno="ngModel" placeholder="Index No" required minlength="0">
+                            <mat-option *ngFor="let paymatrix of CellNoList " [value]="paymatrix">{{ paymatrix }}</mat-option>
+                         </mat-select>
+                    </mat-form-field>  
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="gpf" [ngModel]="itnewemp?.gpf"  #gpf="ngModel" matInput placeholder="GPF" required minlength="0">
+                    </mat-form-field>
+
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input type="text" name="cpsrec" [ngModel]="itnewemp?.cpsrec"  #cpsrec="ngModel" matInput placeholder="CPS_REC" required minlength="0">
+                    </mat-form-field>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="basic" [ngModel]="itnewemp?.basic"  #basic="ngModel" matInput placeholder="BASIC" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+                    <mat-form-field>
+                        <input type="text" name="cgegis" [ngModel]="itnewemp?.cgegis"  #cgegis="ngModel" matInput placeholder="CGEGIS" required minlength="0">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input type="text" name="da" [ngModel]="itnewemp?.da"  #da="ngModel" matInput placeholder="DA" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="cghs" [ngModel]="itnewemp?.cghs"  #cghs="ngModel" matInput placeholder="CGHS" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="hra" [ngModel]="itnewemp?.hra"  #hra="ngModel" matInput placeholder="HRA" required minlength="0">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input type="text" name="itrec" [ngModel]="itnewemp?.itrec"  #itrec="ngModel" matInput placeholder="IT_REC" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="ta" [ngModel]="itnewemp?.ta"  #ta="ngModel" matInput placeholder="TA" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="itcess" [ngModel]="itnewemp?.itcess"  #itcess="ngModel" matInput placeholder="IT_CESS" required minlength="0">
+                    </mat-form-field>  
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input type="text" name="daonta" [ngModel]="itnewemp?.daonta"  #daonta="ngModel" matInput placeholder="DA on TA" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input type="text" name="ptrec" [ngModel]="itnewemp?.ptrec"  #ptrec="ngModel" matInput placeholder="PT_REC" required minlength="0">
+                    </mat-form-field>  
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <mat-label>Effective Date</mat-label>
+                        <input  name="effectivedate" [ngModel]="itnewemp?.effectivedate"  #effectivedate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker3"  required minlength="0">
+                            <mat-datepicker-toggle matSuffix [for]="picker3">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                    <br>
+
+                    <button mat-raised-button color="primary" type="submit"> Save New Emp</button>
+                    <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/itnewemployee']">BACK</button>
+                    
+             
+            </mat-tab>
+		</mat-tab-group>
+	</form>
+</mat-card>

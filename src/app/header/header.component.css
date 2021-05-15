@@ -1,0 +1,70 @@
+
+h1 {
+  background: url('src/assets/PMS11.jpg'); 
+  background-size: cover;
+  color:black;
+  text-align: center;
+  background-image: image("");
+  text-align: center;
+  height: 20%;
+  padding-top: 1%;
+  font-weight: bolder;  
+  text-decoration-line: underline;
+  font-size: -webkit-xxx-large;
+  margin: 0 0 0px;
+  text-shadow: 0 0 beige;
+}
+
+h2 {
+  color: black;
+  font-size: xx-large;
+  height: 7%;
+  font-style: italic;
+  margin: 0 0 0px;
+}
+
+#toolbar1 {
+  height: 7%;
+ /*  background-color:slategray; */
+  background: url('src/assets/PMS6.jpg'); 
+  background-size: cover;
+  color: white;
+  text-align: center;
+  background-image: image("");
+}
+
+#toolbar2 {
+  height: 7%;
+  background-color: lightblue;
+  /* background: url('src/assets/PMS6.jpg'); 
+  background-size: cover;
+  color: white;
+  text-align: center;
+  background-image: image(""); */
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+a{
+  text-decoration:  none;
+  color: white;
+}
+
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-icon{
+  color: black;
+}
+
+

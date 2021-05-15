@@ -1,0 +1,24 @@
+
+mat-card {
+  width: 75%;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+
+mat-option {
+  color: aqua;
+}
+
+
+
+button{
+ /*  margin-left: 45%; */
+  margin-top: 3%;
+}
+
+/* .mat-tab-nav-bar, .mat-tab-header {
+  margin-left: 10%
+}
+
+ */

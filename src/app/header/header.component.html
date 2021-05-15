@@ -1,0 +1,104 @@
+
+ <!-- Main Page Creation  -->
+
+  <h1>MISSILE SYSTEMS QUALITY ASSURANCE AGENCY <br> <br>
+  KANCHANBAGH (HYDERABAD) <br><br> <h2>PAYROLL MANAGEMENT SYSTEM</h2></h1>
+
+  
+<mat-toolbar id="toolbar1" color="primary">
+  <span>
+    <a routerLink="/">Welcome Admin</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+   <!--  <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
+    </li> -->
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-black">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-black">Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>
+<mat-toolbar  id="toolbar2" color= "accent">
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item [matMenuTriggerFor]="master">Master</button>
+    <button mat-menu-item [matMenuTriggerFor]="paytransaction">Pay Transactions</button>
+    <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
+    <button mat-menu-item [matMenuTriggerFor]="utilities">Utilities</button>
+  </mat-menu>
+
+  <mat-menu #master="matMenu">
+    <button mat-menu-item routerLink="/department" routerLinkActive="active">Department Table</button>
+    <button mat-menu-item routerLink="/designation" routerLinkActive="active">Designation Table</button>
+    <button mat-menu-item routerLink="/hra" routerLinkActive="active">HRA Table</button>
+    <button mat-menu-item routerLink="/group" routerLinkActive="active">Group Table</button>
+    <button mat-menu-item routerLink="/employee" routerLinkActive="active">Employee Table</button>
+    <button mat-menu-item routerLink="/loan" routerLinkActive="active">Loan Table</button>
+    <!-- <button mat-menu-item routerLink="/incometax" routerLinkActive="active">Income Tax Slab Rates</button> -->
+  </mat-menu>
+
+  <mat-menu #paytransaction="matMenu">
+    <!-- <button mat-menu-item routerLink="/loanissue" routerLinkActive="active">Loan Issues</button> -->
+    <button mat-menu-item routerLink="/allpaytransactions" routerLinkActive="active">Pay Generation</button>
+    <!-- <button mat-menu-item routerLink="/allowance-recovery" routerLinkActive="active">Pay Allowance and Recovery Details</button> -->
+    <!-- <button mat-menu-item routerLink="/paygeneration" routerLinkActive="active">Pay Generation</button> -->
+  <!--   <button mat-menu-item routerLink="/itsupleepayments" routerLinkActive="active">IT Suplee Payments Form</button> -->
+    <button mat-menu-item routerLink="/itnewemployee" routerLinkActive="active">IT New Employee Details</button>
+  <!--   <button mat-menu-item routerLink="/itoldemployee" routerLinkActive="active">IT Old Employee Details</button> -->
+  </mat-menu>
+  
+  <mat-menu #reports="matMenu">
+    <button mat-menu-item routerLink="/paybill" routerLinkActive="active">Pay Bills</button>
+    <button mat-menu-item routerLink="/payslip" routerLinkActive="active">Pay Slips</button>
+    <button mat-menu-item routerLink="/gpf" routerLinkActive="active">GPF Sub & Refund</button>
+    <button mat-menu-item routerLink="/nps" routerLinkActive="active">NPS Sub & Refund</button>
+    <button mat-menu-item routerLink="/officerecoveries" routerLinkActive="active">Office Recoveries Report</button>
+    <button mat-menu-item routerLink="/schedules" routerLinkActive="active" [matMenuTriggerFor]="schedule">Schedules</button>
+    <!-- <button mat-menu-item routerLink="/form16" routerLinkActive="active">Form 16 and Abstract Report</button> -->
+  </mat-menu>
+
+  <mat-menu #schedule="matMenu">
+    <button mat-menu-item routerLink="/hrareport" routerLinkActive="active">HRA</button>
+    <button mat-menu-item routerLink="/dareport" routerLinkActive="active">DA</button>
+    <button mat-menu-item routerLink="/tareport" routerLinkActive="active">TA</button>
+    <button mat-menu-item routerLink="/ptaxreport" routerLinkActive="active">PTAX</button>
+    <button mat-menu-item routerLink="/hrentreport" routerLinkActive="active">HRENT</button>
+    <button mat-menu-item routerLink="/cgegisreport" routerLinkActive="active">CGEGIS</button>
+    <button mat-menu-item routerLink="/dlomireport" routerLinkActive="active">DLOMI</button>
+    <button mat-menu-item routerLink="/eccsreport" routerLinkActive="active">DRDLECCS</button>
+    <button mat-menu-item routerLink="/cqareport" routerLinkActive="active">CQA(L)</button>
+    <button mat-menu-item routerLink="/miscreport" routerLinkActive="active">MISC REC</button>
+    <button mat-menu-item routerLink="/cghsreport" routerLinkActive="active">CGHS</button>
+    <button mat-menu-item routerLink="/gpfnpsreport" routerLinkActive="active">GPF-NPS NO</button>
+    <button mat-menu-item routerLink="/ncghsreport" routerLinkActive="active">Non CGHS</button>
+    <button mat-menu-item routerLink="/itreport" routerLinkActive="active">IT</button>
+   
+  </mat-menu>
+
+
+  <mat-menu #utilities="matMenu">
+    <button mat-menu-item routerLink="/DAupdate" routerLinkActive="active">DA Update</button>
+    <!-- <button mat-menu-item routerLink="/DAarrears" routerLinkActive="active">DA Arrears</button> -->
+   <!--  <button mat-menu-item routerLink="/HRAupdate" routerLinkActive="active">HRA Update</button> -->
+    <!-- <button mat-menu-item routerLink="/DAonTAupdate" routerLinkActive="active">DA on TA update</button> -->
+    <button mat-menu-item routerLink="/basictype" routerLinkActive="active">Basic Type Update</button>
+    <button mat-menu-item routerLink="/employeetype" routerLinkActive="active">Employee Type Update</button>
+  </mat-menu>
+
+</mat-toolbar>
+
+
+
+

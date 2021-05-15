@@ -1,0 +1,33 @@
+<div style="text-align:center"> 
+    <h1>
+      DA LIST
+    </h1>
+  </div>
+  
+  
+   <div class="mat-elevation-z2">
+     <table>
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">DA %</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let da of das">
+            <td>{{ da.title }}</td>
+            <td *ngIf="userIsAuthenticated">
+              <button type="button" color="accent" [routerLink]="['/editda', da.id]">EDIT</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <mat-paginator [length]="totalDas" [pageSize]="dasPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="das.length > 0"></mat-paginator>
+  <p class="info-text mat-body-1" *ngIf="das.length <= 0 && !isLoading">No HRA added yet!</p>
+  </div>
+    <button mat-raised-button color="primary" position= "centre" routerLink="/addDA" routerLinkActive="mat-accent">ADD NEW DA</button>
+    <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+  
+  
+  

@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSaveLoan(loanForm)" #loanForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input
+        matInput
+        type="text"
+        name="name"
+        [ngModel]="loan?.name"
+        required
+        minlength="3"
+        placeholder="Loan Name"
+        #name="ngModel">
+        <mat-error *ngIf="name.invalid">Please enter a Loan Name.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+        matInput
+        rows="4"
+        name="description"
+        [ngModel]="loan?.description"
+        required
+        placeholder="Loan Description"
+      #description="ngModel"></textarea>
+      <mat-error *ngIf="description.invalid">Please enter a Loan description.</mat-error>
+    </mat-form-field> 
+    <mat-form-field>
+        <mat-select placeholder="Loan Type" required minlength="0"  name="type"
+        [ngModel]="loan?.type" #type="ngModel">
+            <mat-option value="principal">Principal</mat-option>
+            <mat-option value="interest">Interest</mat-option>
+            <mat-option value="subscription">Subscription</mat-option>
+            <mat-option value="recovery">Recovery</mat-option>
+          </mat-select>
+          <mat-error *ngIf="type.invalid">Please enter a Loan type.</mat-error>
+       <!--  <textarea
+        matInput
+        rows="4"
+        name="type"
+        [ngModel]="loan?.type"
+        required
+        placeholder="Loan Type"
+      #type="ngModel"></textarea>
+      <mat-error *ngIf="type.invalid">Please enter a Loan type.</mat-error> -->
+    </mat-form-field> 
+    <br>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Loan</button>
+      <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/loan']">BACK</button>
+    </form>
+  </mat-card>
+  
+  

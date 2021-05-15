@@ -1,0 +1,39 @@
+<!-- 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="loanissues.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let loanissue of loanissues">
+    <mat-expansion-panel-header>
+      <label>Employee Name: <p>{{ loanissue.empname }}</p></label>
+    </mat-expansion-panel-header>
+    <label>Employee Number: <p>{{ loanissue.empno }}</p></label>
+    <label>Designation:<p>{{ loanissue.designation }}</p></label>
+    <label>Employee Type:<p>{{ loanissue.emptype }}</p></label>
+    <label>Group:<p>{{ loanissue.group }}</p></label>
+    <label>Basic Pay:<p>{{ loanissue.basicpay }}</p></label>
+
+    <label>Select Loan:<p>{{ loanissue.selectloan }}</p></label>
+    <label>Loan Type:<p>{{ loanissue. loantype }}</p></label>
+    <label>Loan Ammount:<p>{{ loanissue.loanamount }}</p></label>
+    <label>No of Insallments:<p>{{ loanissue.noofinsta }}</p></label>
+    <label>Installment Amount:<p>{{ loanissue.instaamount }}</p></label>
+    <label>All Records:<p>{{ loanissue.allrec }}</p></label>
+    <label>Balance:<p>{{ loanissue.balance }}</p></label>
+
+    <label>Last Installment Number:<p>{{ loanissue.lastinstano }}</p></label>
+    <label>Paid Date:<p>{{ loanissue.paiddate }}</p></label>
+    <label>Remarks:<p>{{ loanissue.remarks }}</p></label>
+    <label>Effective Date:<p>{{ loanissue.effectivedate }}</p></label>
+    <label>Status:<p>{{ loanissue.status }}</p></label>
+
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/editloanissue', loanissue.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(dept.id)">DELETE</button> -->
+ <!--    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalLoanissues" [pageSize]="loanissuesPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="loanissues.length > 0"></mat-paginator>
+<p class="info-text mat-body-1" *ngIf="loanissues.length <= 0 && !isLoading">No Loan Issue type added yet!</p>
+
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createloanissue" routerLinkActive="mat-accent">Add Loan Issue </button>
+ -->

@@ -1,0 +1,1409 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSaveEmp(empForm)" #empForm="ngForm" *ngIf="!isLoading">
+     
+		<mat-tab-group>
+			<mat-tab label="Basic Details">
+
+				  <div>
+					  <mat-form-field>
+						  <input matInput type="text" name="empname" [ngModel]="emp?.empname"  #empname="ngModel" placeholder="Emp Name" required minlength="0">
+            </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+				    <mat-form-field>
+            <mat-select name="basictype" [ngModel]="emp?.basictype"  #basictype="ngModel" placeholder="Basic Type" required minlength="0">
+              <mat-option *ngFor="let basictype of basictypes" [value]="basictype.title">{{ basictype.title }}</mat-option>
+            </mat-select>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
+
+            <mat-form-field>
+						  <mat-select name="emptype" [ngModel]="emp?.emptype"  #emptype="ngModel" placeholder="Employee Type" required minlength="0">
+                <mat-option *ngFor="let emptype of emptypes" [value]="emptype.title">{{ emptype.title }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-select name="department" [ngModel]="emp?.department"  #department="ngModel" placeholder="Dept" required minlength="0">
+                <mat-option *ngFor="let dept of depts" [value]="dept.title">{{ dept.title }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+				  </div>
+
+				  <div>
+              <mat-form-field>
+                <mat-select name="designation" [ngModel]="emp?.designation"  #designation="ngModel" placeholder="Designation (Full Name)" required minlength="0">
+                  <mat-option *ngFor="let desig of desigs" [value]="desig.title">{{ desig.title }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-select name="group" [ngModel]="emp?.group"  #group="ngModel" placeholder="Group" required minlength="0">
+                <mat-option *ngFor="let group of groups" [value]="group.title">{{ group.title }}</mat-option>
+              </mat-select>
+            </mat-form-field>  
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <mat-form-field>
+              <mat-select name="gender" [ngModel]="emp?.gender"  #gender="ngModel" placeholder="Gender" required minlength="0">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-label>DOB</mat-label>
+                <input  name="dob" [ngModel]="emp?.dob"  #dob="ngModel" [max]="maxDate" matInput [matDatepicker]="picker"  required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+				</div>
+        
+        <div>	
+            <mat-form-field>
+              <mat-label>DOJ</mat-label>
+                <input  name="doj" [ngModel]="emp?.doj"  #doj="ngModel" [max]="maxDate" matInput [matDatepicker]="picker1" required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-label>DONI</mat-label>
+                <input  name="doni" [ngModel]="emp?.doni"  #doni="ngModel" [max]="maxDate" matInput [matDatepicker]="picker2" required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-label>DOLI</mat-label>
+                <input  name="doli" [ngModel]="emp?.doli"  #doli="ngModel" [max]="maxDate" matInput [matDatepicker]="picker3" required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker3">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-label>DOR</mat-label>
+                <input  name="dor" [ngModel]="emp?.dor"  #dor="ngModel" [max]="maxDate" matInput [matDatepicker]="picker4" required minlength="0">
+                <mat-datepicker-toggle matSuffix [for]="picker4">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker4></mat-datepicker>
+            </mat-form-field>
+				</div>
+
+        <div>
+					<mat-form-field>
+						<input matInput type="text" name="pan" [ngModel]="emp?.pan"  #pan="ngModel" placeholder="PAN" required minlength="0">
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<mat-form-field>
+						<input matInput type="text" name="gpf" [ngModel]="emp?.gpf"  #gpf="ngModel" placeholder="GPF Number">
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <mat-form-field>
+              <input matInput type="text" name="nps" [ngModel]="emp?.nps"  #nps="ngModel" placeholder="NPS Number">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <input matInput type="text" name="aadharno" [ngModel]="emp?.aadharno"  #aadharno="ngModel" placeholder="Aadhar Numbers" required minlength="0">
+            </mat-form-field>
+				</div>
+
+			</mat-tab>
+
+			<mat-tab label="Bank Account Details">
+        <div>
+					  <mat-form-field>
+              <mat-select name="bankname" [ngModel]="emp?.bankname"  #bankname="ngModel" placeholder="Bank Name" required minlength="0">
+                <mat-option value="State Bank of India">STAE BANK OF INDIA</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				    <mat-form-field>
+						  <input matInput type="text" name="bankaccountno" [ngModel]="emp?.bankaccountno"  #bankaccountno="ngModel" placeholder="Bank Account No" required minlength="0">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+						  <input matInput type="text" name="ifsccode" [ngModel]="emp?.ifsccode"  #ifsccode="ngModel" placeholder="IFSC Code" required minlength="0">
+            </mat-form-field>
+				  </div>
+      </mat-tab>
+
+			<mat-tab label="Pay Scale Details">
+
+        <div>
+					<mat-form-field>
+						<mat-select name="paylevel" [ngModel]="emp?.paylevel"  #paylevel="ngModel" placeholder="Pay level" required minlength="0">
+               <mat-option *ngFor="let paymatrix of LevelNoList" [value]="paymatrix">{{ paymatrix }}</mat-option>
+               <!-- <mat-option value="13A">13A</mat-option> -->
+
+            </mat-select>
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				  <mat-form-field>
+						<mat-select name="cellno" [ngModel]="emp?.cellno"  #cellno="ngModel" placeholder="Cell No" required minlength="0">
+                <mat-option *ngFor="let paymatrix of CellNoList " [value]="paymatrix">{{ paymatrix }}</mat-option>
+             </mat-select>
+          </mat-form-field>
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <mat-form-field>
+						<input matInput type="text" name="basicpay" [ngModel]="emp?.basicpay"  #basicpay="ngModel" placeholder="Basic Pay"  minlength="0" [readonly]="true">
+          </mat-form-field>
+				</div>
+
+        <div>
+					<mat-form-field>
+						<mat-select name="govtqurters" [ngModel]="emp?.govtqurters"  #govtqurters="ngModel" placeholder="Govt. Quarters" required minlength="0">
+              <mat-option value="yes">Yes</mat-option>
+              <mat-option value="no">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-select name="medicalstatus" [ngModel]="emp?.medicalstatus"  #medicalstatus="ngModel" placeholder="Medical Status" required minlength="0">
+                <mat-option value="yes">Yes</mat-option>
+                <mat-option value="no">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <mat-select name="exservice" [ngModel]="emp?.exservice"  #exservice="ngModel" placeholder="Ex-Service" required minlength="0">
+                <mat-option value="yes">Yes</mat-option>
+                <mat-option value="no">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+				</div>
+
+        <div>
+					<mat-form-field>
+            <input matInput type="text" name="ptax" [ngModel]="emp?.ptax"  #ptax="ngModel" placeholder="PTAX" [readonly]="true">
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				  <mat-form-field>
+            <input matInput type="text" name="cgegis" [ngModel]="emp?.cgegis"  #cgegis="ngModel" placeholder="CGEGIS">
+          </mat-form-field>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <mat-form-field> 
+          <mat-select name="da" [ngModel]="emp?.da"  #da="ngModel" placeholder="DA" required minlength="0">
+            <mat-option *ngFor="let da of das" [value]="da.title">{{ da.title }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+			</div>
+
+        <div>
+          <mat-form-field>
+            <mat-select name="hra" [ngModel]="emp?.hra"  #hra="ngModel" placeholder="HRA" required minlength="0">
+              <mat-option *ngFor="let hra of hras" [value]="hra.title">{{ hra.title }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <input matInput type="text" name="hraamt" [ngModel]="emp?.hraamt"  #hraamt="ngModel" placeholder="HRA Amount"  [readonly]="true">
+            </mat-form-field>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <mat-form-field>
+            <input matInput type="text" name="daamt" [ngModel]="emp?.daamt"  #daamt="ngModel" placeholder="DA Amount" [readonly]="true">
+          </mat-form-field>
+        </div>
+ 
+        <div>
+					<mat-form-field>
+						<input matInput type="text" name="daonta" [ngModel]="emp?.daonta"  #daonta="ngModel" placeholder="DA on TA" [readonly]="true">
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <input matInput type="text" name="npssubscription" [ngModel]="emp?.npssubscription"  #npssubscription="ngModel" placeholder="NPS Subscription" [readonly]="true">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field>
+              <input matInput type="text" name="remarks" [ngModel]="emp?.remarks"  #remarks="ngModel" placeholder="Remarks" required minlength="0">
+            </mat-form-field>
+				</div>
+
+        <div> 
+          
+        <mat-form-field>
+          <input matInput type="text" name="ta" [ngModel]="emp?.ta"  #ta="ngModel" placeholder="TA (For Pay Level 14, Enter TA value) " [readonly]="true">
+        </mat-form-field>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
+
+        <mat-form-field>
+          <mat-select name="noncghs" [ngModel]="emp?.noncghs"  #noncghs="ngModel" placeholder="CGHS" required minlength="0">
+            <mat-option value="yes">Yes</mat-option>
+            <mat-option value="no">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+     </mat-tab>
+
+			<mat-tab label="Generate Employee No">
+
+        <div>
+          <mat-form-field>
+						<input matInput type="text" name="empno" [ngModel]="emp?.empno"  #empno="ngModel" placeholder="Enter Employee No">
+          </mat-form-field>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<mat-form-field>
+						<mat-select name="status" [ngModel]="emp?.status"  #status="ngModel" placeholder="Status" required minlength="0">
+              <mat-option value="active">Active</mat-option>
+              <mat-option value="inactive">Inactive</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				  <mat-form-field>
+						<mat-label>Effective Date</mat-label>
+              <input  name="effectivedate" [ngModel]="emp?.effectivedate"  #effectivedate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker5" required minlength="0">
+              <mat-datepicker-toggle matSuffix [for]="picker5">
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker5></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+      </mat-tab>
+
+      <!-- HBA LOAN Accordian -->
+
+       <mat-tab label="Loan Issue Details">
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                House Building Advance Loan
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+             <div>
+                  <mat-form-field>
+                    <mat-select name="HBAloan" [ngModel]="emp?.HBAloan"  #HBAloan="ngModel" placeholder="Loan Name">
+                    <mat-option value="HBAloan">HBA LOAN</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-select name="HBAtype" [ngModel]="emp?.HBAtype"  #HBAtype="ngModel" placeholder="Loan Type" >
+                      <mat-option value="principal">Principal</mat-option>
+                      <mat-option value="interest">Interest</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="HBAloanamt" [ngModel]="emp?.HBAloanamt"  #HBAloanamt="ngModel" placeholder="Loan Amount">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="HBAinstamt" [ngModel]="emp?.HBAinstamt"  #HBAinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                  </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="HBAinstno" [ngModel]="emp?.HBAinstno"  #HBAinstno="ngModel" placeholder="No of Installments">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                  <mat-form-field>
+                    <input matInput type="text" name="HBAbal" [ngModel]="emp?.HBAbal"  #HBAbal="ngModel" placeholder="Balance">
+                  </mat-form-field>
+                </div>
+        
+                    <!-- <mat-form-field>
+                      <input matInput type="text" name="HBArec" [ngModel]="emp?.HBArec"  #HBArec="ngModel" placeholder="All Recovery">
+                    </mat-form-field> -->
+
+               <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="HBAlastinst" [ngModel]="emp?.HBAlastinst"  #HBAlastinst="ngModel" placeholder="Last Installment No">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <mat-label>Paid Date</mat-label>
+                      <input  name="HBAlastdate" [ngModel]="emp?.HBAlastdate"  #HBAlastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker6" >
+                      <mat-datepicker-toggle matSuffix [for]="picker6">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker6></mat-datepicker>
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     
+                  <mat-form-field>
+                    <input matInput type="text" name="HBAremarks" [ngModel]="emp?.HBAremarks"  #HBAremarks="ngModel" placeholder="Remarks">
+                  </mat-form-field>
+               </div>
+                
+                <div>
+                  <mat-form-field>
+                    <mat-label>Effective Date</mat-label>
+                      <input  name="HBAstartdate" [ngModel]="emp?.HBAstartdate"  #HBAstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker7" >
+                        <mat-datepicker-toggle matSuffix [for]="picker7">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker7></mat-datepicker>
+                     </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                      <mat-form-field>
+                        <mat-select name="HBAstatus" [ngModel]="emp?.HBAstatus"  #HBAstatus="ngModel" placeholder="Status" >
+                      <mat-option value="active">Active</mat-option>
+                      <mat-option value="inactive">Inactive</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                  </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Motor Cycle LOAN Accordian -->
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Motor Cycle Loan
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+              <div>
+                  <mat-form-field>
+                    <mat-select name="MCloan" [ngModel]="emp?.MCloan"  #MCloan="ngModel" placeholder="Loan Name"> 
+                      <mat-option value="MCloan">MC LOAN</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-select name="MCtype" [ngModel]="emp?.MCtype"  #MCtype="ngModel" placeholder="Loan Type" >
+                      <mat-option value="principal">Principal</mat-option>
+                      <mat-option value="interest">Interest</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="MCloanamt" [ngModel]="emp?.MCloanamt"  #MCloanamt="ngModel" placeholder="Loan Amount">
+                    </mat-form-field>
+                </div>
+              
+                <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="MCinstno" [ngModel]="emp?.MCinstno"  #MCinstno="ngModel" placeholder="No of Installments">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="MCinstamt" [ngModel]="emp?.MCinstamt"  #MCinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                  </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="MCbal" [ngModel]="emp?.MCbal"  #MCbal="ngModel" placeholder="Balance">
+                    </mat-form-field>
+                </div>
+                
+                <!--<mat-form-field>
+                  <input matInput type="text" name="MCrec" [ngModel]="emp?.MCrec"  #MCrec="ngModel" placeholder="All Recovery">
+                </mat-form-field> -->
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput type="text" name="MClastinst" [ngModel]="emp?.MClastinst"  #MClastinst="ngModel" placeholder="Last Installment No">
+                    </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <mat-form-field>
+                      <mat-label>Paid Date</mat-label>
+                        <input  name="MClastdate" [ngModel]="emp?.MClastdate"  #MClastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker8" >
+                        <mat-datepicker-toggle matSuffix [for]="picker8">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker8></mat-datepicker>
+                    </mat-form-field>
+                    
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="MCremarks" [ngModel]="emp?.MCremarks"  #MCremarks="ngModel" placeholder="Remarks">
+                    </mat-form-field>
+                  </div>
+        
+                 <div>
+                  <mat-form-field>
+                    <mat-label>Effective Date</mat-label>
+                       <input  name="MCstartdate" [ngModel]="emp?.MCstartdate"  #MCstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker9" >
+                       <mat-datepicker-toggle matSuffix [for]="picker9">
+                       </mat-datepicker-toggle>
+                       <mat-datepicker #picker9></mat-datepicker>
+                   </mat-form-field> 
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-select name="MCstatus" [ngModel]="emp?.MCstatus"  #MCstatus="ngModel" placeholder="Status" >
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="inactive">Inactive</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Computer LOAN Accordian -->
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Computer Loan
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+             <div>
+                  <mat-form-field>
+                    <mat-select name="PCloan" [ngModel]="emp?.PCloan"  #PCloan="ngModel" placeholder="Loan Name"> 
+                      <mat-option value="PCloan">PC LOAN</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-select name="PCtype" [ngModel]="emp?.PCtype"  #PCtype="ngModel" placeholder="Loan Type" >
+                      <mat-option value="principal">Principal</mat-option>
+                      <mat-option value="interest">Interest</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="PCloanamt" [ngModel]="emp?.PCloanamt"  #PCloanamt="ngModel" placeholder="Loan amount">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="PCinstno" [ngModel]="emp?.PCinstno"  #PCinstno="ngModel" placeholder="No of Installments">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="PCinstamt" [ngModel]="emp?.PCinstamt"  #PCinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="PCbal" [ngModel]="emp?.PCbal"  #PCbal="ngModel" placeholder="Balance">
+                  </mat-form-field>
+                </div>
+        
+                    <!-- <mat-form-field>
+                      <input matInput type="text" name="PCrec" [ngModel]="emp?.PCrec"  #PCrec="ngModel" placeholder="All Recovery">
+                    </mat-form-field> -->
+                 
+        
+                  <div>
+                    <mat-form-field>
+                      <input matInput type="text" name="PClastinst" [ngModel]="emp?.PClastinst"  #PClastinst="ngModel" placeholder="Last Installment No">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-label>Paid Date</mat-label>
+                        <input  name="PClastdate" [ngModel]="emp?.PClastdate"  #PClastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker10" >
+                        <mat-datepicker-toggle matSuffix [for]="picker10">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker10></mat-datepicker>
+                    </mat-form-field>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="PCremarks" [ngModel]="emp?.PCremarks"  #PCremarks="ngModel" placeholder="Remarks">
+                    </mat-form-field>
+                  </div>
+        
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Effective Date</mat-label>
+                           <input  name="PCstartdate" [ngModel]="emp?.PCstartdate"  #PCstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker11" >
+                           <mat-datepicker-toggle matSuffix [for]="picker11">
+                           </mat-datepicker-toggle>
+                           <mat-datepicker #picker11></mat-datepicker>
+                       </mat-form-field>
+        
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                      <mat-form-field>
+                        <mat-select name="PCstatus" [ngModel]="emp?.PCstatus"  #PCstatus="ngModel" placeholder="Status" >
+                      <mat-option value="active">Active</mat-option>
+                      <mat-option value="inactive">Inactive</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                  </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Car Loan Accordian -->
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Car Loan
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+             <div>
+                  <mat-form-field>
+                    <mat-select name="CARloan" [ngModel]="emp?.CARloan"  #CARloan="ngModel" placeholder="Loan Name"> 
+                      <mat-option value="CARloan">CAR LOAN</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <mat-select name="CARtype" [ngModel]="emp?.CARtype"  #CARtype="ngModel" placeholder="Loan Type" >
+                      <mat-option value="principal">Principal</mat-option>
+                      <mat-option value="interest">Interest</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="CARloanamt" [ngModel]="emp?.CARloanamt"  #CARloanamt="ngModel" placeholder="Loan Amount">
+                    </mat-form-field>
+                </div>
+
+               
+                  <div>
+                    <mat-form-field>
+                      <input matInput type="text" name="CARinstno" [ngModel]="emp?.CARinstno"  #CARinstno="ngModel" placeholder="No of Installments">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="CARinstamt" [ngModel]="emp?.CARinstamt"  #CARinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="CARbal" [ngModel]="emp?.CARbal"  #CARbal="ngModel" placeholder="Balance">
+                    </mat-form-field>
+                  </div>
+   
+                    <!-- <mat-form-field>
+                      <input matInput type="text" name="CARrec" [ngModel]="emp?.CARrec"  #CARrec="ngModel" placeholder="All Recovery">
+                    </mat-form-field> -->
+                  
+                  <div>
+                    <mat-form-field>
+                      <input matInput type="text" name="CARlastinst" [ngModel]="emp?.CARlastinst"  #CARlastinst="ngModel" placeholder="Last Installment No">
+                    </mat-form-field>
+
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <mat-label>Paid Date</mat-label>
+                        <input  name="CARlastdate" [ngModel]="emp?.CARlastdate"  #CARlastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker12" >
+                        <mat-datepicker-toggle matSuffix [for]="picker12">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker12></mat-datepicker>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="CARremarks" [ngModel]="emp?.CARremarks"  #CARremarks="ngModel" placeholder="Remarks">
+                    </mat-form-field>
+                  </div>
+        
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Effective Date</mat-label>
+                           <input  name="CARstartdate" [ngModel]="emp?.CARstartdate"  #CARstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker13" >
+                           <mat-datepicker-toggle matSuffix [for]="picker13">
+                           </mat-datepicker-toggle>
+                           <mat-datepicker #picker13></mat-datepicker>
+                       </mat-form-field>
+        
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                     <mat-form-field>
+                      <mat-select name="CARstatus" [ngModel]="emp?.CARstatus"  #CARstatus="ngModel" placeholder="Status" >
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="inactive">Inactive</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+                </div>   
+          </mat-expansion-panel>
+        </mat-accordion>
+
+       <!-- GPF Loan Accordian -->
+
+       <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              GPF Loan
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+           <div>
+                <mat-form-field>
+                  <mat-select name="GPFloan" [ngModel]="emp?.GPFloan"  #GPFloan="ngModel" placeholder="Loan Name"> 
+                    <mat-option value="GPFloan">GPF LOAN</mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+                  <mat-form-field>
+                    <mat-select name="GPFtype" [ngModel]="emp?.GPFtype"  #GPFtype="ngModel" placeholder="Loan Type" >
+                    <mat-option value="principal">Subscription</mat-option>
+                    <mat-option value="interest">Recovery</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="GPFloanamt" [ngModel]="emp?.GPFloanamt"  #GPFloanamt="ngModel" placeholder="Loan Amount">
+                  </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field>
+                  <input matInput type="text" name="GPFinstno" [ngModel]="emp?.GPFinstno"  #GPFinstno="ngModel" placeholder="No of Installments">
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="GPFinstamt" [ngModel]="emp?.GPFinstamt"  #GPFinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="GPFbal" [ngModel]="emp?.GPFbal"  #GPFbal="ngModel" placeholder="Balance">
+                </mat-form-field>
+              </div>
+
+                 <!-- <mat-form-field>
+                    <input matInput type="text" name="OTHERrec" [ngModel]="emp?.OTHERrec"  #OTHERrec="ngModel" placeholder="All Recovery">
+                  </mat-form-field> -->               
+               
+      
+                <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="GPFlastinst" [ngModel]="emp?.GPFlastinst"  #GPFlastinst="ngModel" placeholder="Last Installment No">
+                  </mat-form-field>
+      
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                  <mat-form-field>
+                    <mat-label>Paid Date</mat-label>
+                      <input  name="GPFlastdate" [ngModel]="emp?.GPFlastdate"  #GPFlastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker14">
+                      <mat-datepicker-toggle matSuffix [for]="picker14">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker14></mat-datepicker>
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="GPFremarks" [ngModel]="emp?.GPFremarks"  #GPFremarks="ngModel" placeholder="Remarks">
+                  </mat-form-field>               
+                </div>
+   
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Effective Date</mat-label>
+                         <input  name="GPFstartdate" [ngModel]="emp?.GPFstartdate"  #GPFstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker15" >
+                         <mat-datepicker-toggle matSuffix [for]="picker15">
+                         </mat-datepicker-toggle>
+                         <mat-datepicker #picker15></mat-datepicker>
+                     </mat-form-field>
+      
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                   <mat-form-field>
+                    <mat-select name="GPFstatus" [ngModel]="emp?.GPFstatus"  #GPFstatus="ngModel" placeholder="Status" >
+                  <mat-option value="active">Active</mat-option>
+                  <mat-option value="inactive">Inactive</mat-option>
+                </mat-select>
+                </mat-form-field> 
+              </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+       <!-- Other Loan Accordian -->
+
+       <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Other Loan
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+           <div>
+                <mat-form-field>
+                  <mat-select name="OTHERloan" [ngModel]="emp?.OTHERloan"  #OTHERloan="ngModel" placeholder="Loan Name"> 
+                    <mat-option value="OTHERloan">OTHER LOAN</mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+                  <mat-form-field>
+                    <mat-select name="OTHERtype" [ngModel]="emp?.OTHERtype"  #OTHERtype="ngModel" placeholder="Loan Type" >
+                    <mat-option value="principal">Principal</mat-option>
+                    <mat-option value="interest">Interest</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="OTHERloanamt" [ngModel]="emp?.OTHERloanamt"  #OTHERloanamt="ngModel" placeholder="Loan Amount">
+                  </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field>
+                  <input matInput type="text" name="OTHERinstno" [ngModel]="emp?.OTHERinstno"  #OTHERinstno="ngModel" placeholder="No of Installments">
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="OTHERinstamt" [ngModel]="emp?.OTHERinstamt"  #OTHERinstamt="ngModel" placeholder="Installment Amount" [readonly]="true">
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="OTHERbal" [ngModel]="emp?.OTHERbal"  #OTHERbal="ngModel" placeholder="Balance">
+                </mat-form-field>
+              </div>
+
+                 <!-- <mat-form-field>
+                    <input matInput type="text" name="OTHERrec" [ngModel]="emp?.OTHERrec"  #OTHERrec="ngModel" placeholder="All Recovery">
+                  </mat-form-field> -->               
+               
+      
+                <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="OTHERlastinst" [ngModel]="emp?.OTHERlastinst"  #OTHERlastinst="ngModel" placeholder="Last Installment No">
+                  </mat-form-field>
+      
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                  <mat-form-field>
+                    <mat-label>Paid Date</mat-label>
+                      <input  name="OTHERlastdate" [ngModel]="emp?.OTHERlastdate"  #OTHERlastdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker16">
+                      <mat-datepicker-toggle matSuffix [for]="picker16">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker16></mat-datepicker>
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="OTHERremarks" [ngModel]="emp?.OTHERremarks"  #OTHERremarks="ngModel" placeholder="Remarks">
+                  </mat-form-field>               
+                </div>
+   
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Effective Date</mat-label>
+                         <input  name="OTHERstartdate" [ngModel]="emp?.OTHERstartdate"  #OTHERstartdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker17" >
+                         <mat-datepicker-toggle matSuffix [for]="picker17">
+                         </mat-datepicker-toggle>
+                         <mat-datepicker #picker17></mat-datepicker>
+                     </mat-form-field>
+      
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                   <mat-form-field>
+                    <mat-select name="OTHERstatus" [ngModel]="emp?.OTHERstatus"  #OTHERstatus="ngModel" placeholder="Status" >
+                  <mat-option value="active">Active</mat-option>
+                  <mat-option value="inactive">Inactive</mat-option>
+                </mat-select>
+                </mat-form-field> 
+              </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-tab> 
+
+       <!-- Allowance and Recovery Details -->
+
+       <mat-tab label="Allowance and Recovery Details">
+
+         <!-- Allowance and CDA Recoveries -->
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Allowances and CDA Recoveries
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+             <div>
+                  <mat-form-field>
+                    <input matInput type="text" name="gpfsub" [ngModel]="emp?.gpfsub"  #gpfsub="ngModel" placeholder="GPF SUB">
+                  </mat-form-field>
+        
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                    <mat-form-field>
+                      <input matInput type="text" name="gpfrec" [ngModel]="emp?.gpfrec"  #gpfrec="ngModel" placeholder="GPF REC">
+                    </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="npssub" [ngModel]="emp?.npssub"  #npssub="ngModel" placeholder="NPS SUB">
+                  </mat-form-field>  
+                </div>
+
+                <div>
+                  <mat-form-field>
+                      <input matInput type="text" name="npsrec" [ngModel]="emp?.npsrec"  #npsrec="ngModel" placeholder="NPS REC">
+                  </mat-form-field>   
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+                  <mat-form-field>
+                    <input matInput type="text" name="it" [ngModel]="emp?.it"  #it="ngModel" placeholder="IT REC">
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                      <input matInput type="text" name="cess" [ngModel]="emp?.cess"  #cess="ngModel" placeholder="4% Cess" [readonly]="true">
+                    </mat-form-field>
+                </div>
+
+              <div>
+                  <mat-form-field>
+                      <input matInput type="text" name="misc1" [ngModel]="emp?.misc1"  #misc1="ngModel" placeholder="MISC1 REC" required minlength="0">
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="homerent" [ngModel]="emp?.homerent"  #homerent="ngModel" placeholder="HRENT" required minlength="0">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="water" [ngModel]="emp?.water"  #water="ngModel" placeholder="WATER" required minlength="0">
+                </mat-form-field>
+              </div>
+
+              <div>
+                  <mat-form-field>
+                      <input matInput type="text" name="elec" [ngModel]="emp?.elec"  #elec="ngModel" placeholder="ELEC" required minlength="0">
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                      <input matInput type="text" name="cghs" [ngModel]="emp?.cghs"  #cghs="ngModel"  placeholder="CGHS" [readonly]="true">
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="misc1Alw" [ngModel]="emp?.misc1Alw"  #misc1Alw="ngModel" placeholder="MISC1 ALW" required minlength="0">
+                </mat-form-field> 
+              </div>         
+              </mat-expansion-panel>
+            </mat-accordion>
+
+            <!-- Office Recoveries -->
+
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Office Recoveries
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div>
+                  <mat-form-field>
+                      <input matInput type="text" name="dlomi" [ngModel]="emp?.dlomi"  #dlomi="ngModel" placeholder="DLOMI" required minlength="0">
+                  </mat-form-field>
+  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+                <mat-form-field>
+                      <input matInput type="text" name="welfare" [ngModel]="emp?.welfare"  #welfare="ngModel" placeholder="WF" required minlength="0">    
+                </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="DRDLEcss" [ngModel]="emp?.DRDLEcss"  #DRDLEcss="ngModel" placeholder="DRDL ECCS" required minlength="0"> 
+                </mat-form-field>
+              </div>
+  
+              <div>
+                <mat-form-field>
+                  <input matInput type="text" name="cqa" [ngModel]="emp?.cqa"  #cqa="ngModel" placeholder="CQA (L)" required minlength="0"> 
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <input matInput type="text" name="OfrMisc1" [ngModel]="emp?.OfrMisc1"  #OfrMisc1="ngModel" placeholder=" Office Recoveries MISC1" required minlength="0"> 
+                </mat-form-field>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <mat-form-field>
+                  <mat-label>Effective Date</mat-label>
+                  <input  name="OffRecvdate" [ngModel]="emp?.OffRecvdate"  #OffRecvdate="ngModel" [max]="maxDate" matInput [matDatepicker]="picker18" >
+                  <mat-datepicker-toggle matSuffix [for]="picker18">
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #picker18></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <div>
+            <mat-form-field>
+              <input matInput type="text" name="grosspay" [ngModel]="emp?.grosspay"  #grosspay="ngModel" placeholder=" Gross Pay" [readonly]="true"> 
+            </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             
+              
+              <mat-form-field>
+                <input matInput type="text" name="tdeduction" [ngModel]="emp?.tdeduction"  #tdeduction="ngModel" placeholder="Total Deduction" [readonly]="true"> 
+              </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+              <mat-form-field>
+                <input matInput type="text" name="netpay" [ngModel]="emp?.netpay"  #netpay="ngModel" placeholder="Net Pay" [readonly]="true"> 
+              </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+              <mat-form-field>
+                <input matInput type="text" name="toffcrec" [ngModel]="emp?.toffcrec"  #toffcrec="ngModel" placeholder="Total Office Recoveries" [readonly]="true"> 
+              </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+              <mat-form-field>
+                <input matInput type="text" name="tobnkamt" [ngModel]="emp?.tobnkamt"  #tobnkamt="ngModel" placeholder="To Bank Amount" [readonly]="true"> 
+              </mat-form-field>
+          </div>
+        </mat-tab>
+		</mat-tab-group>
+    <br>
+  <button mat-raised-button color="primary" type="submit">Save Employee</button>
+  <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/employee']">BACK</button>
+	</form>
+</mat-card>
+

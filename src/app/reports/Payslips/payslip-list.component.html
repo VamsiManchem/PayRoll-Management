@@ -1,0 +1,416 @@
+<mat-card id="searchfield">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  
+   
+      <mat-label for="Month">Month</mat-label>
+      <input type="text" id="Month" [formControl]="Month"/>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+      <mat-label for="Year">Year</mat-label>
+      <input type="text" id="Year" [formControl]="Year"/>
+  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <mat-label for="basictype">Basic Type</mat-label>
+      <input type="text" id="basictype" [formControl]="basictype"/>
+
+  <br>
+  <br>
+
+      <mat-label for="emptype">Employee Type</mat-label>
+      <input type="text" id="emptype" [formControl]="emptype"/>
+   
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <mat-label for="department">Department</mat-label>
+      <input type="text" id="department" [formControl]="department"/>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <mat-label for="empno">Employee No</mat-label>
+      <input type="text" id="empno" [formControl]="empno"/>
+
+<br>
+<br>
+
+      <button type="button" color="primary" [routerLink]="['/dashboard']">BACK</button>
+    
+</mat-card>
+
+  <div id="payslip" >
+    <table class="empDetail" style="outline: auto;">
+        <tr *ngFor="let record of paygen | search: [Month.value, Year.value]: ['Month', 'Year'] ;">
+            
+           <!--  <th >Month</th>
+            <td>{{ record.Month }}</td>
+            <th>Year</th>
+            <td>{{ record.Year| date: "dd-MMM-yyyy" }}</td>
+            <td> -->
+      <div height="100px" style='background-color: #c2d69b; text-align: center; outline: auto; font-weight: 550' >
+        <td colspan='4'>
+          <img height="90px" src='https://organisationmedia.toggleflow.com/demo/logo.png' /></td>
+        <td colspan='6' class="companyName"> MISSILE SYSTEMS QUALIY ASSUANCE AGENCY(MSQAA)
+          <br> MINISTRY OF DEFENCE, C/O DRDL, KANCHANBAGH, HYDERABD-500058
+          <br> PAY SLIP FOR THE MONTH OF {{ record.Month }}{{ record.Year| date: "yyyy" }}
+        </td>
+     </div>
+
+      <div class="border" *ngFor="let emp of record.EmpRecord  | keyvalue  | filter: [basictype.value, emptype.value, department.value, empno.value]: ['basictype', 'emptype', 'department', 'empno'] ;">
+      
+        <tr>
+          <th style="font-weight:500">DOB:</th>
+            <td style="font-weight:500">{{ emp.value.dob | date: "dd-MMM-yyyy" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          <th style="font-weight:500">EMP NO:</th>
+            <td style="font-weight:bold">{{ emp.value.empno }}</td>
+        <tr>
+
+        <tr>
+          <th style="font-weight:500">DOJ:</th>
+            <td style="font-weight:500">{{ emp.value.doj | date: "dd-MMM-yyyy" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight:bold;">{{ emp.value.empname }}</td> 
+            <td style="text-align:center;">-</td>
+            <td style="font-weight:bold; text-align: left;">{{ emp.value.designation }}</td>
+            <td></td> 
+        </tr>
+
+        <tr>
+          <th style="font-weight:500">DNI:</th>
+            <td style="font-weight:500">{{ emp.value.doni | date: "dd-MMM-yyyy" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          <th style="font-weight:500">AADHAAR No:</th>
+            <td style="font-weight:bold">{{ emp.value.aadharno }}</td>
+        </tr>
+
+
+     
+        <tr style="outline: auto;">
+        <th colspan="4" class="table-border-right" style="font-size: large; text-align: center;">PAY & ALLOWANCES</th>
+        <th colspan="4" class="table-border-right" style="font-size: large; text-align: center;">C. D. A RECOVERIES</th>
+        <th colspan="4" class="table-border-right" style="font-size: large; text-align: center;"> OFFICE RECOVERIES </th>
+        <th colspan="4" style="font-size: large; text-align: center;"> ACCOUNT DETAILS </th>
+        </tr>
+
+        
+   
+    
+      <tr>
+        <th colspan="2" style="font-weight:500">BASIC</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.basicpay }}</td>
+
+        <th colspan="2" style="font-weight:500">GPFSUB</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.gpfsub }}</td>
+
+        <th colspan="2" style="font-weight:500">DLOMI</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.dlomi }}</td>
+
+        <th colspan="2" style="font-weight:500">PAN NO</th >
+          <td style="text-align:center;">:</td>
+          <td style="font-weight:500">{{ emp.value.pan }}</td>
+      </tr >
+
+      <tr>
+        <th colspan="2" style="font-weight:500">DA</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.da }}</td>
+
+        <th colspan="2" style="font-weight:500">GPFREC</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.gpfrec }}</td>
+
+        <th colspan="2" style="font-weight:500">WF</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.welfare }}</td>
+
+        <th colspan="2" style="font-weight:500">GPF/PRAN</th >
+          <td style="text-align:center;">:</td>
+          <td style="font-weight:500">{{ emp.value.gpf }}/{{ emp.value.nps }}</td>
+      </tr>
+
+      <tr>
+        <th colspan="2" style="font-weight:500">HRA</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.hraamt }}</td>
+
+        <th colspan="2" style="font-weight:500">NPS(l) REC</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.npsrec }}</td>
+
+        <th colspan="2" style="font-weight:500">DRDLECCS</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.DRDLEcss }}</td>
+
+        <th colspan="2" style="font-weight:500">PPAN NO</th >
+          <td style="text-align:center;">:</td>
+          <td style="font-weight:500">0</td> <!-- what is the exact value? -->
+      </tr>
+
+      <tr>
+        <th colspan="2" style="font-weight:500">TA</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.ta }}</td>
+
+        <th colspan="2" style="font-weight:500">GPFLOAN</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.GPFinstamt }}&nbsp;&nbsp;&nbsp;&nbsp;{{emp.value.GPFlastinst }}/{{ emp.value.GPFinstno }}</td> 
+
+        <th colspan="2" style="font-weight:500">CQA(L)</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.cqa }}</td>
+
+        <th colspan="2" style="font-weight:500">PAY MATRIX</th >
+          <td style="text-align:center;">:</td>
+          <td style="font-weight:500">{{ emp.value.paylevel }}/{{ emp.value.cellno }}</td>
+      </tr >
+
+      <tr>
+        <th colspan="2" style="font-weight:500">DAonTA</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.daonta }}</td>
+
+        <th colspan="2" style="font-weight:500">CAR LOAN</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.CARinstamt }}</td> 
+
+        <th colspan="2" style="font-weight:500">DRDL MISC</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.OfrMisc1 }}</td>
+
+        <th colspan="2" style="font-weight:500">SBI</th>
+          <td style="text-align:center;">:</td>
+          <td style="font-weight:500">{{ emp.value. bankaccountno }}<br>{{ emp.value.ifsccode }}</td>
+      </tr>
+
+      <tr>
+        <th colspan="2" style="font-weight:500">PH</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">0</td> <!-- what is the exact value? -->
+
+        <th colspan="2" style="font-weight:500">CARINT</th >
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.CARinstamt }}&nbsp;&nbsp;&nbsp;{{ emp.value.CARinstno }}/{{ emp.value.CARlastinst }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+      <tr>
+        <th colspan="2" style="font-weight:500">MISC</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500">{{ emp.value.misc1Alw }}</td>
+
+        <th colspan="2" style="font-weight:500">MC LOAN</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.MCinstamt }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+  
+        <td colspan="4"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">MC INT</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.MCinstamt }}&nbsp;&nbsp;&nbsp;{{ emp.value.MCinstno }}/{{ emp.value.MClastinst }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">HBA LOAN</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.HBAinstamt }}</td>
+        
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">HBA INT</th>
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.HBAinstamt }}&nbsp;&nbsp;&nbsp;{{ emp.value.HBAinstno }}/{{ emp.value.HBAlastinst }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr >
+
+      <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">PC LOAN</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.PCinstamt }}</td>
+        
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">PC INT</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.PCinstamt }}&nbsp;&nbsp;&nbsp;{{ emp.value.PCinstno }}/{{ emp.value.PClastinst }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">HRENT</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.homerent }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">IT REC</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.it }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">IT 4% Cess</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.cess }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>          
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">CGEGIS</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.cgegis }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">PTAX</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.ptax }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">CGHS</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.cghs }}</td>
+
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr>
+
+       <tr>
+        <td colspan="4" class="table-border-right"></td>
+
+        <th colspan="2" style="font-weight:500">MISC1</th> 
+          <td style="text-align:left;">:</td>
+          <td class="myAlign" style="font-weight:500; text-align:left;">{{ emp.value.misc1 }}</td>
+         
+        <td colspan="4" class="table-border-right"></td>
+
+        <td colspan="4"></td>
+      </tr >
+  
+      
+      <div id="four" style="outline: auto; font-size: medium; font-weight: bold;">
+        <tr class="myBackground">
+          <th colspan="3">GROSS PAY [₹]:</th> 
+            <td>{{ emp.value.grosspay }}</td>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <th colspan="3">DEDUCTION [₹]:</th>
+            <td>{{ emp.value.tdeduction }}</td>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <th colspan="3">OFFICE REC [₹]:</th>
+            <td>{{ emp.value.toffcrec }}</td>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <th colspan="3">NET PAY [₹]:</th>
+            <td>{{ emp.value.netpay }}</td>  
+        </tr >
+      </div>
+
+    </div>
+
+
+
+
+
+

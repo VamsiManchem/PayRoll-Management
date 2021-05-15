@@ -1,0 +1,85 @@
+
+  #searchfield {
+    background-color:white;
+    color:black;
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 20%;
+  }
+
+
+  .head {
+    margin: 50px;
+    margin-bottom: 50px;
+    width: 50%;
+  }
+  
+  .companyName {
+    text-align: center;
+    font-size: 20px;
+  }
+  #payslip {
+    margin-top:3%;
+    color:black;
+    margin-left:21%;
+  }
+  .salaryMonth {
+    text-align: center;
+  }
+  
+  .table-border-bottom {
+    border-bottom: 2px solid;
+  }
+  
+  .table-border-right {
+    border-right: 2px solid;
+  }
+  
+  .slipcat {
+    padding-top: 10px;
+    text-align: left;
+    border: 2px solid black;
+    height: 40px;
+  }
+  
+  .myAlign {
+    text-align: center;
+    border-right: 2px solid black;
+  }
+  
+  .myTotalBackground {
+    padding-top: 10px;
+    text-align: left;
+    background-color: #161615;
+    border-spacing: 0px;
+  }
+  
+  .align-4 {
+    width: 100%;
+    float: left;
+  }
+  
+  .tail {
+    margin-top: 35px;
+  }
+  
+  .align-2 {
+    margin-top: 25px;
+    width: 50%;
+    float: left;
+  }
+  
+  .border-center {
+    text-align: center;
+  }
+  .border-center th, .border-center td {
+    border: 2px solid black;
+  }
+  
+  th  {
+    text-align: left;
+  }
+
+  td {
+    text-align: right;
+  }

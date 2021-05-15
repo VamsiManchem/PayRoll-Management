@@ -1,0 +1,188 @@
+<!-- <mat-card>
+	<form>
+		<mat-tab-group>
+			<mat-tab label="Employee Details">
+
+				  <div>
+					  <mat-form-field>
+						  <input matInput type="text" name="empno" [ngModel]="loanissue?.empno"  #empno="ngModel" placeholder="Employee Number" required minlength="0">
+                          
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Emp Name" required minlength="0">
+                    </mat-form-field>
+				  </div>
+
+				  <div>
+					  <mat-form-field>
+                        <mat-select placeholder="Designation" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <mat-select placeholder="Emp Type" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+
+                <div>
+					<mat-form-field>
+						<mat-select placeholder="Group" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<mat-form-field>
+						<mat-select placeholder="Basic Pay" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+            </mat-tab>
+
+            <mat-tab label="Loan Details"> 
+                <div>
+                    <mat-form-field>
+                        <mat-select placeholder="Select Loan" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <mat-select placeholder="Loan Type" required minlength="0">
+                        <mat-option value="xyz">XYZ</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Loan Amount" required minlength="0">
+                    </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="title" placeholder="No of Instalments" required minlength="0">
+                  </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Instalment Amount" required minlength="0">
+                    </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <input matInput type="text" name="title" placeholder="All Rec" required minlength="0">
+                  </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Balance" required minlength="0">
+                    </mat-form-field>
+
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Previous Instalments">
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Last Instalment No" required minlength="0">
+                    </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <mat-label>Paid Date</mat-label>
+                        <input matInput [matDatepicker]="picker1" required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker1">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Remarks" required minlength="0">
+                    </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                    <mat-label>Effective Date</mat-label>
+                        <input matInput [matDatepicker]="picker2" required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <mat-select placeholder="Status" required minlength="0">
+                            <mat-option value="active">Active</mat-option>
+                            <mat-option value="inactive">Inactive</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <button mat-raised-button color="primary" > Save </button>
+          
+                </div>
+
+            </mat-tab>
+
+		</mat-tab-group>
+	</form>
+</mat-card>
+ -->

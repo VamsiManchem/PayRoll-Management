@@ -1,0 +1,87 @@
+label {
+    color: aqua;
+}
+.info-text {
+  text-align: center;
+}
+
+:host {
+  margin-top: 1rem;
+}
+/* mat-spinner{
+  margin: auto;
+ } */
+/* 
+p {
+    color: blanchedalmond;
+}
+   */
+ 
+  
+   .mat-paginator {
+    background-color:silver;
+    color: black;
+    margin-top: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+  
+  
+  .mat-raised-button {
+    /* margin-left: 45%; */
+    margin-top: 3%;
+  }
+  
+  table {
+    width: 100%;
+    background-color:silver;
+    color: black;
+    display: contents;
+   /*  border-collapse:separate; 
+    border-spacing: 0 15px;  */
+  }
+  
+  th{
+    
+    text-align: center;
+    background-color:silver;
+    color: black;
+    border: 1px solid black; 
+    padding: 5px;
+    
+  }
+
+  td{
+    text-align: center;
+    border: 1px solid black; 
+    padding: 5px;
+  }
+  
+  
+/*   tr{
+    
+    text-align: justify;
+    align-items: center;
+  } */
+  
+  h1 {
+    font-size: xx-large;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 3%;
+    height: 40px;
+  
+  }
+  
+  div {
+   align-items: center;
+   overflow-x: scroll;
+  }
+  
+
+  .form-control {
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    width:20%;
+    height: 25px;
+  }

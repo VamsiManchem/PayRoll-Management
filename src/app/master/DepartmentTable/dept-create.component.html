@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveDept(deptForm)" #deptForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      name="title"
+      [ngModel]="dept?.title"
+      required
+      minlength="3"
+      placeholder="Dept Title"
+      #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a department</mat-error>
+    </mat-form-field>
+   <!--  <mat-form-field>
+      <textarea
+      matInput
+      rows="4"
+      name="content"
+      [ngModel]="dept?.content"
+      required
+      placeholder="Dept Content"
+    #content="ngModel"></textarea>
+    <mat-error *ngIf="content.invalid">Please enter a department content.</mat-error>
+  </mat-form-field> -->
+  <br>
+  
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit">Save Department</button>
+    <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/department']">BACK</button>
+  </form>
+</mat-card>
+
+

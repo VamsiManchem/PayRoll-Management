@@ -1,0 +1,64 @@
+:host {
+    margin-top: 1rem;
+  }
+
+  .info-text {
+    text-align: center;
+  }
+  
+    /* mat-spinner{
+   margin: auto;
+  }
+   */
+  
+   mat-paginator {
+    background-color:lightblue;
+    color: black;
+    width: 100%;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  
+  
+  .mat-raised-button {
+/*     margin-left: 52%; */
+    margin-top: 3%;
+  }
+  
+  table {
+    width: 100%;
+    background-color:lightblue;
+    color:black;
+    align-items: center;
+  }
+  
+  th{
+    background-color:lightblue;
+    text-align: justify;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  
+  
+  tr{
+    text-align: justify;
+    align-items: center;
+    font-size: large;
+  }
+  
+  h1 {
+    font-size: xx-large;
+    background-color:lightblue;
+    color:black;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 3%;
+  
+  }
+  
+  div {
+   width: 70%;
+   align-items: center;
+   margin-left: 15%;
+  }

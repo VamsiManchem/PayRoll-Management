@@ -1,0 +1,51 @@
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="depts.length > 0 && !isLoading"> -->
+
+<!--   <mat-expansion-panel *ngFor="let dept of depts">
+    <mat-expansion-panel-header>
+      {{ dept.title }}
+    </mat-expansion-panel-header>
+   
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/edit', dept.id]">EDIT</a>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalDepts" [pageSize]="deptsPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="depts.length > 0"></mat-paginator>
+<p class="info-text mat-body-1" *ngIf="depts.length <= 0 && !isLoading">No departments added yet!</p>
+ -->
+
+<div style="text-align:center"> 
+  <h1>
+    LIST OF DEPARTMENTS
+  </h1>
+</div>
+
+
+ <div class="mat-elevation-z2">
+   <table>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Department Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dept of depts">
+          <td>{{ dept.title }}</td>
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/edit', dept.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator [length]="totalDepts" [pageSize]="deptsPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="depts.length > 0"></mat-paginator>
+   <p class="info-text mat-body-1" *ngIf="depts.length <= 0 && !isLoading">No departments added yet!</p>
+ </div>
+
+  <button mat-raised-button color="primary" margin-left="35%" routerLink="/create" routerLinkActive="mat-accent">ADD DEPARTMENT</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+

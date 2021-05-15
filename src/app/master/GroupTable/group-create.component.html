@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSaveGroup(groupForm)" #groupForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="group?.title"
+        required
+        minlength="1"
+        placeholder="Group Title"
+        #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please enter a Group </mat-error>
+      </mat-form-field>
+     <!--  <mat-form-field>
+        <textarea
+        matInput
+        rows="4"
+        name="content"
+        [ngModel]="dept?.content"
+        required
+        placeholder="Dept Content"
+      #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a department content.</mat-error>
+    </mat-form-field> -->
+    <br>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Group</button>
+      <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/group']">BACK</button>
+    </form>
+  </mat-card>
+  
+  
+  

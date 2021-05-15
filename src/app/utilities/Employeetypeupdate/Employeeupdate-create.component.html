@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSaveEmptype(emptypeForm)" #emptypeForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="emptype?.title"
+        required
+        minlength="3"
+        placeholder="Emptype Title"
+        #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please enter a employee type</mat-error>
+      </mat-form-field>
+     <!--  <mat-form-field>
+        <textarea
+        matInput
+        rows="4"
+        name="content"
+        [ngModel]="dept?.content"
+        required
+        placeholder="Dept Content"
+      #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a department content.</mat-error>
+    </mat-form-field> -->
+    <br>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Employee Type</button>
+      <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/employeetype']">BACK</button>
+    </form>
+  </mat-card>
+  
+  
+  

@@ -1,0 +1,46 @@
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="hras.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let hra of hras">
+    <mat-expansion-panel-header>
+      {{ hra.title }}
+    </mat-expansion-panel-header>
+     <p>{{ dept.content }}</p> 
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/edithra', hra.id]">EDIT</a>
+       <button mat-button color="warn" (click)="onDelete(dept.id)">DELETE</button> 
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<div style="text-align:center"> 
+  <h1>
+    HRA LIST
+  </h1>
+</div>
+
+
+ <div class="mat-elevation-z2">
+   <table>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">HRA %</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hra of hras">
+          <td>{{ hra.title }}</td>
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/edithra', hra.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <mat-paginator [length]="totalHras" [pageSize]="hrasPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="hras.length > 0"></mat-paginator>
+<p class="info-text mat-body-1" *ngIf="hras.length <= 0 && !isLoading">No HRA added yet!</p>
+</div>
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createhra" routerLinkActive="mat-accent">ADD NEW HRA</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+

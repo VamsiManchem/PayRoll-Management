@@ -1,0 +1,341 @@
+
+<mat-card>
+	<form>
+        <h1> IT SUPLEE PAYMENTS DETAILS </h1>
+		<mat-tab-group>
+			<mat-tab label="Employee Details">
+
+                  <div>
+		            <mat-form-field>
+                        <mat-label> Financial Year From: </mat-label>
+                        <input matInput [matDatepicker]="picker1" required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker1">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                  
+		            <mat-form-field>
+                        <mat-label> Financial Year To: </mat-label>
+                        <input matInput [matDatepicker]="picker2" required minlength="0">
+                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>  
+                  </div>
+
+				  <div>
+					<mat-form-field>
+						  <input matInput type="text" name="title" placeholder="Emp No" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Emp Name" required minlength="0">
+                    </mat-form-field>
+				  </div>
+
+				  <div>
+					  <mat-form-field>
+                        <mat-select placeholder="Designation" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <mat-select placeholder="Emp Type" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+
+                <div>
+					<mat-form-field>
+						<mat-select placeholder="Group" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<mat-form-field>
+						<mat-select placeholder="Basic" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+				</div>
+            </mat-tab>
+
+            <mat-tab label="Suplee Payments">
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Bonus" required minlength="0">
+                    </mat-form-field>  
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     
+                      
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Sec 80C" required minlength="0">
+                    </mat-form-field>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Other Income" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="DA Arr1" required minlength="0">
+                    </mat-form-field>  
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Med Claim" required minlength="0">
+                    </mat-form-field> 
+                    
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Pension Fund" required minlength="0">
+                    </mat-form-field> 
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 
+                       
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="DA Arr2" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Donation/HPL" required minlength="0">
+                    </mat-form-field>
+
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="80CCD(1)" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="HBA Int" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Tax Save Bnd" required minlength="0">
+                    </mat-form-field>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="80CCD(1B)" required minlength="0">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Arr Paid" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+                        
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="LIC Pvt" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="80CCD(2)" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="MACP Arr" required minlength="0">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="HBA Loan" required minlength="0">
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+                     
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="80U PH" required minlength="0">
+                    </mat-form-field>  
+
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="CEA Alw" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Rent Paid" required minlength="0">
+                    </mat-form-field> 
+                </div>
+   
+                 <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="80E Edu" required minlength="0">
+                    </mat-form-field> 
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Leave Encash" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Tution Fee" required minlength="0">
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="CEA @100" required minlength="0">
+                    </mat-form-field>  
+                </div>
+
+                
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="PPF" required minlength="0">
+                    </mat-form-field>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Financial Year" required minlength="0">
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Officer Name" required minlength="0">
+                    </mat-form-field>  
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="S/o, W/o Name" required minlength="0">
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Designation" required minlength="0">
+                    </mat-form-field>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Desig Full Name" required minlength="0">
+                    </mat-form-field> 
+                    
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    
+                    <mat-form-field>
+                        <input matInput type="text" name="title" placeholder="Unit Name" required minlength="0">
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  
+
+                    <mat-form-field>
+                        <mat-select placeholder="HRA PAN" required minlength="0">
+                            <mat-option value="xyz">XYZ</mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+
+                    <br>
+                        <button mat-raised-button color="primary"> New </button>
+                        <button mat-raised-button color="primary"> Save </button>
+                        <button mat-raised-button color="primary"> Clear </button>
+                        <button mat-raised-button color="primary"> Close </button>
+    
+           
+
+                </mat-tab>
+		</mat-tab-group>
+	</form>
+</mat-card>

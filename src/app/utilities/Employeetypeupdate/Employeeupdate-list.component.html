@@ -1,0 +1,50 @@
+
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="emptypes.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let emptype of emptypes">
+    <mat-expansion-panel-header>
+      {{ emptype.title }}
+    </mat-expansion-panel-header>
+    <p>{{ dept.content }}</p>
+    <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="accent" [routerLink]="['/editemptype', emptype.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(dept.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<div style="text-align:center"> 
+  <h1>
+    TYPES OF EMPLOYEES LIST
+  </h1>
+</div>
+
+
+ <div class="mat-elevation-z2">
+   <table>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Employee Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emptype of emptypes">
+          <td>{{ emptype.title }}</td>
+          <td *ngIf="userIsAuthenticated">
+            <button type="button" color="accent" [routerLink]="['/editemptype', emptype.id]">EDIT</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <mat-paginator [length]="totalEmptypes" [pageSize]="emptypesPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="emptypes.length > 0"></mat-paginator>
+  <p class="info-text mat-body-1" *ngIf="emptypes.length <= 0 && !isLoading">No employee type added yet!</p>
+</div>
+
+  <button mat-raised-button color="primary" position= "centre" routerLink="/createemptype" routerLinkActive="mat-accent">ADD NEW EMPLOYEE TYPE</button>
+  <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+
+
+
+

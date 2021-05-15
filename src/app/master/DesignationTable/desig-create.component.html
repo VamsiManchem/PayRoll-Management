@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSaveDesig(desigForm)" #desigForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="desig?.title"
+        required
+        minlength="3"
+        placeholder="Desig Title"
+        #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please enter a designation title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+        matInput
+        rows="4"
+        name="content"
+        [ngModel]="desig?.content"
+        required
+        placeholder="Desig Content"
+      #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a designation content.</mat-error>
+    </mat-form-field> 
+    <br>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Designation</button>
+      <button type="button" color="accent" style="margin-left:5%" [routerLink]="['/designation']">BACK</button>
+    </form>
+  </mat-card>
+  
+  

@@ -1,0 +1,93 @@
+<mat-card id="searchfield">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  
+   
+      <mat-label for="Month">Month</mat-label> &nbsp;&nbsp;
+      <input type="text" id="Month" [formControl]="Month"/>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+      <mat-label for="Year">Year</mat-label> &nbsp;&nbsp;
+      <input type="text" id="Year" [formControl]="Year"/>
+  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <mat-label for="basictype">Basic Type</mat-label> &nbsp;&nbsp;
+      <input type="text" id="basictype" [formControl]="basictype"/>
+
+  <br>
+  <br>
+
+      <mat-label for="emptype">Employee Type</mat-label> &nbsp;&nbsp;
+      <input type="text" id="emptype" [formControl]="emptype"/>
+   
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+      <mat-label for="department">Department</mat-label> &nbsp;&nbsp;
+      <input type="text" id="department" [formControl]="department"/>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-label for="empno">Employee No</mat-label> &nbsp;&nbsp;
+      <input type="text" id="empno" [formControl]="empno"/>
+
+<br>
+<br>
+      <button type="button" color="primary" [routerLink]="['/dashboard']">BACK</button>
+    
+</mat-card>
+
+<mat-card id="paybilltable" >
+  <mat-card-header>
+  <div id="tableheader"> 
+    <h1>
+      DA REPORT
+    </h1>
+  </div>
+   <!--  <button mat-raised-button color="primary" id="getPDF"  (click)="downloadAsPDF()">Print Report</button>  -->
+</mat-card-header>
+  
+
+   <mat-card-content color="mat-accent">
+   <div id="tablecontent" #tablecontent class="tablecontent">
+     <table class="mat-elevation-z8">
+          <tr>
+                <th >Month</th>
+                <th>Year</th>
+                <th>
+                  <tr>
+                    <th>EMP NO</th>
+                    <th>EMP Name</th>
+                    <th>Desig</th>
+                    <th>BASIC PAY</th>
+                    <th>GROUP</th>
+                    <th>DA</th>
+                    <th>REMARKS</th>
+                </tr>
+              </th>
+          </tr>
+          
+        <tbody>
+          <!-- <tr *ngFor="let record of paygen| filter:searchText"> -->
+            <tr *ngFor="let record of paygen | search: [Month.value, Year.value]: ['Month', 'Year'] ;">
+            <td>{{ record.Month }}</td>
+            <td>{{ record.Year| date: "dd-MMM-yyyy" }}</td>
+            <td>
+            <tr *ngFor="let emp of record.EmpRecord  | keyvalue  | filter: [basictype.value, emptype.value, department.value, empno.value]: ['basictype', 'emptype', 'department', 'empno'] ;">
+             
+                <td>{{ emp.value.empno }}</td>
+                <td>{{ emp.value.empname }}</td>
+                <td>{{ emp.value.designation }}</td>
+                <td>{{ emp.value.basicpay }}</td>
+                <td>{{ emp.value.group }}</td>
+                <td>{{ emp.value.da }}</td>
+                <td><input type="text"></td>
+
+            </tr>
+         </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+  </mat-card>
+   

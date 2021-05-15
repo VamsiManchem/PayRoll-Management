@@ -1,0 +1,405 @@
+<!-- <mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <form (submit)="onShowPbilreport(pbilreportForm)" #pbilreportForm="ngForm" *ngIf="!isLoading">
+          <h1> PAY BILLS REPORT </h1>
+      
+                <div>
+              <mat-form-field>
+                      <mat-select name="Month" [ngModel]="pbillreport?.Month" #Month="ngModel" placeholder="Month">
+                          <mat-option value="Jan">Jan</mat-option>
+                          <mat-option value="Feb">Feb</mat-option>
+                          <mat-option value="Mar">Mar</mat-option>
+                          <mat-option value="Apr">Apr</mat-option>
+                          <mat-option value="May">May</mat-option>
+                          <mat-option value="Jun">Jun</mat-option>
+                          <mat-option value="Jul">Jul</mat-option>
+                          <mat-option value="Aug">Aug</mat-option>
+                          <mat-option value="Sep">Sep</mat-option>
+                          <mat-option value="Oct">Oct</mat-option>
+                          <mat-option value="Nov">Nov</mat-option>
+                          <mat-option value="Dec">Dec</mat-option>
+                        </mat-select>
+                      </mat-form-field> 
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                  <mat-form-field>
+                      <mat-label> Year </mat-label>
+                      <input  name="Year" [ngModel]="pbillreport?.Year"  #Year="ngModel" matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Year">
+                      <mat-datepicker-toggle matSuffix [for]="picker">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>  
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                      <mat-select name="basictype" [ngModel]="pbillreport?.basictype"  #basictype="ngModel" placeholder="Basic Type">
+                          <mat-option *ngFor="let basictype of basictypes" [value]="basictype.title">{{ basictype.title }}</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <div>
+                  <mat-form-field>
+                      <mat-select name="emptype" [ngModel]="pbillreport?.emptype"  #emptype="ngModel" placeholder="Employee Type">
+                          <mat-option *ngFor="let emptype of emptypes" [value]="emptype.title">{{ emptype.title }}</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+            
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                      <mat-select name="department" [ngModel]="pbillreport?.department"  #department="ngModel" placeholder="Dept">
+                          <mat-option *ngFor="let dept of depts" [value]="dept.title">{{ dept.title }}</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <mat-form-field>
+                      <input matInput type="text" id="no" placeholder="Emp No">
+                  </mat-form-field>
+              </div>
+               
+                  <br>
+               
+                  <button mat-raised-button color="primary" position="centre" type="submit">Show Report</button>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                  <button mat-raised-button color="primary"> Close </button>                  
+  </form>
+</mat-card>
+
+<mat-card id="paybilltable">
+<mat-card-header>
+<div id="tableheader"> 
+  <h1>
+    PAY BILL REPORT
+  </h1>
+</div>
+</mat-card-header>
+
+
+ <mat-card-content color="mat-accent">
+ <div id="tablecontent">
+   <table class="mat-elevation-z8">
+        <tr>
+              <th >Month</th>
+              <th>Year</th>
+              <th>
+                <tr>
+              <th >Employee Name</th>
+              <th>Employee Number</th>
+              <th >Basic Type</th>
+              <th>Employee Type</th>
+              <th>Department</th>
+              <th>Desig</th>
+              <th>Group</th>
+              <th>Gender</th>
+              <th>DOB</th>
+              <th>DOJ</th>
+              <th>DONI</th>
+              <th>DOR</th>
+              <th>PAN No.</th>
+              <th>GPF No.</th>
+              <th>NPS No.</th>
+              <th>Aadhar No.</th>
+
+              <th>Bank Name</th>
+              <th>Bank Acc No.</th>
+              <th>IFSC</th>
+
+              <th>Pay Level</th>
+              <th>Cell No</th>
+              <th>Basic Pay</th>
+              <th>Govt.Qtrs</th>
+              <th>Medical Status</th>
+              <th>Ex-Service</th>
+              <th>PTAX</th>
+              <th>CGEGIS</th>
+              <th>DA</th>
+              <th>HRA</th>
+              <th>TA</th>
+              <th>DA on TA</th>
+              <th>NPS Subscription</th>
+              <th>Remarks</th>
+
+              <th>Status</th>
+              <th>Effec Date</th>
+
+              <th>HBA Loan</th>
+              <th>HBA Type</th>
+              <th>HBA Loan Amount</th>
+              <th>HBA Inst No</th>
+              <th>HBA Inst Amount</th>
+              <th>HBA Bal</th>
+              <th>HBA Last Inst</th>
+              <th>HBA Lpaid Date</th>
+              <th>HBA Remarks</th>
+              <th>HBA Start Date</th>
+              <th>HBA Status</th>
+
+              
+              <th>MC Loan</th>
+              <th>MC Type</th>
+              <th>MC Loan Amount</th>
+              <th>MC Inst No</th>
+              <th>MC Inst Amount</th>
+              <th>MC Bal</th>
+              <th>MC Last Inst</th>
+              <th>MC Lpaid Date</th>
+              <th>MC Remarks</th>
+              <th>MC Start Date</th>
+              <th>MC Status</th>
+              
+              <th>PC Loan</th>
+              <th>PC Type</th>
+              <th>PC Loan Amount</th>
+              <th>PC Inst No</th>
+              <th>PC Inst Amount</th>
+              <th>PC Bal</th>
+              <th>PC Last Inst</th>
+              <th>PC Lpaid Date</th>
+              <th>PC Remarks</th>
+              <th>PC Start Date</th>
+              <th>PC Status</th>
+
+              <th>CAR Loan</th>
+              <th>CAR Type</th>
+              <th>CAR Loan Amount</th>
+              <th>CAR Inst No</th>
+              <th>CAR Inst Amount</th>
+              <th>CAR Bal</th>
+              <th>CAR Last Inst</th>
+              <th>CAR Lpaid Date</th>
+              <th>CAR Remarks</th>
+              <th>CAR Start Date</th>
+              <th>CAR Status</th>
+
+              <th>GPF Loan</th>
+              <th>GPF Type</th>
+              <th>GPF Loan Amount</th>
+              <th>GPF Inst No</th>
+              <th>GPF Inst Amount</th>
+              <th>GPF Bal</th>
+              <th>GPF Last Inst</th>
+              <th>GPF Lpaid Date</th>
+              <th>GPF Remarks</th>
+              <th>GPF Start Date</th>
+              <th>GPF Status</th>
+
+              <th>Other Loan</th>
+              <th>Other Type</th>
+              <th>Other Loan Amount</th>
+              <th>Other Inst No</th>
+              <th>Other Inst Amount</th>
+              <th>Other Bal</th>
+              <th>Other Last Inst</th>
+              <th>Other Lpaid Date</th>
+              <th>Other Remarks</th>
+              <th>Other Start Date</th>
+              <th>Other Status</th>
+
+              <th>GPF Sub</th>
+              <th>GPF Rec</th>
+              <th>NPS Sub</th>
+              <th>NPS Rec</th>
+              <th>IT</th>
+              <th>4% Cess</th>
+              <th>Misc Rec</th>
+              <th>HRA%</th>
+              <th>HRA Amount</th>
+              <th>Water</th>
+              <th>Elec Bill</th>
+              <th>CGHS</th>
+              <th>Misc Allow</th>
+
+              <th>DLOMI</th>
+              <th>Welfare</th>
+              <th>DRDL ECSS</th>
+              <th>CQA(L)</th>
+              <th>Offc Rec Misc</th>
+              <th>Offc Rec Date</th>
+
+              <th>Gross Pay</th>
+              <th>Total Deduction</th>
+              <th>Net Pay</th>
+              <th>Total Offc Rec</th>
+              <th>To Bank Amount</th>
+              
+              <th>Action</th>
+              </tr>
+            </th>
+        </tr>
+        
+      <tbody>
+    
+          <tr *ngFor="let record of paygen | search: [Month.value, Year.value]: ['Month', 'Year'] ;">
+          <td>{{ record.Month }}</td>
+          <td>{{ record.Year| date: "dd-MMM-yyyy" }}</td>
+          <td>
+          <tr *ngFor="let emp of record.EmpRecord | keyvalue | search: [basictype.value, emptype.value, department.value]: ['basictype', 'emptype', 'department'] ;">
+       
+         <td>{{ emp.value.empname }}</td>
+        <td>{{ emp.value.empno }}</td>
+        <td>{{ emp.value.basictype }}</td>
+        <td>{{ emp.value.emptype }}</td>
+        <td>{{ emp.value.department }}</td>
+        <td>{{ emp.value.designation }}</td>
+        <td>{{ emp.value.group }}</td>
+        <td>{{ emp.value.gender }}</td>
+        <td>{{ emp.value.dob | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.doj | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.doni | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.dor | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.pan }}</td>
+        <td>{{ emp.value.gpf }}</td>
+        <td>{{ emp.value.nps }}</td>
+        <td>{{ emp.value.aadharno }}</td>
+        
+        <td>{{ emp.value.bankname }}</td>
+        <td>{{ emp.value. bankaccountno }}</td>
+        <td>{{ emp.value.ifsccode }}</td>
+
+        <td>{{ emp.value.paylevel }}</td>
+        <td>{{ emp.value.cellno }}</td>
+        <td>{{ emp.value.basicpay }}</td>
+        <td>{{ emp.value.govtqurters }}</td>
+        <td>{{ emp.value.medicalstatus }}</td>
+        <td>{{ emp.value.exservice }}</td>
+        <td>{{ emp.value.ptax }}</td>
+        <td>{{ emp.value.cgegis }}</td>
+        <td>{{ emp.value.da }}</td>
+        <td>{{ emp.value.hra }}</td>
+        <td>{{ emp.value.hraamt }}</td>
+        <td>{{ emp.value.ta }}</td>
+        <td>{{ emp.value.daonta }}</td>
+        <td>{{ emp.value.npssubscription }}</td>
+        <td>{{ emp.value.remarks }}</td>
+
+        <td>{{ emp.value.status }}</td>
+        <td>{{ emp.value.effectivedate | date: "dd-MMM-yyyy" }}</td>
+
+        <td>{{ emp.value.HBAloan }}</td>
+        <td>{{ emp.value.HBAtype }}</td>
+        <td>{{ emp.value.HBAloanamt }}</td>
+        <td>{{ emp.value.HBAinstno }}</td>
+        <td>{{ emp.value.HBAinstamt }}</td>
+        <td>{{ emp.value.HBAbal }}</td>
+        <td>{{ emp.value.HBAlastinst }}</td>
+        <td>{{ emp.value.HBAlastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.HBAremarks }}</td>
+        <td>{{ emp.value.HBAstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.HBAstatus }}</td>
+
+        <td>{{ emp.value.MCloan }}</td>
+        <td>{{ emp.value.MCtype }}</td>
+        <td>{{ emp.value.MCloanamt }}</td>
+        <td>{{ emp.value.MCinstno }}</td>
+        <td>{{ emp.value.MCinstamt }}</td>
+        <td>{{ emp.value.MCbal }}</td>
+        <td>{{ emp.value.MClastinst }}</td>
+        <td>{{ emp.value.MClastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.MCremarks }}</td>
+        <td>{{ emp.value.MCstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.MCstatus }}</td>
+
+        <td>{{ emp.value.PCloan }}</td>
+        <td>{{ emp.value.PCtype }}</td>
+        <td>{{ emp.value.PCloanamt }}</td>
+        <td>{{ emp.value.PCinstno }}</td>
+        <td>{{ emp.value.PCinstamt }}</td>
+        <td>{{ emp.value.PCbal }}</td>
+        <td>{{ emp.value.PClastinst }}</td>
+        <td>{{ emp.value.PClastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.PCremarks }}</td>
+        <td>{{ emp.value.PCstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.PCstatus }}</td>
+
+        <td>{{ emp.value.CARloan }}</td>
+        <td>{{ emp.value.CARtype }}</td>
+        <td>{{ emp.value.CARloanamt }}</td>
+        <td>{{ emp.value.CARinstno }}</td>
+        <td>{{ emp.value.CARinstamt }}</td>
+        <td>{{ emp.value.CARbal }}</td>
+        <td>{{ emp.value.CARlastinst }}</td>
+        <td>{{ emp.value.CARlastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.CARremarks }}</td>
+        <td>{{ emp.value.CARstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.CARstatus }}</td>
+
+        <td>{{ emp.value.GPFloan }}</td>
+        <td>{{ emp.value.GPFtype }}</td>
+        <td>{{ emp.value.GPFloanamt }}</td>
+        <td>{{ emp.value.GPFinstno }}</td>
+        <td>{{ emp.value.GPFinstamt }}</td>
+        <td>{{ emp.value.GPFbal }}</td>
+        <td>{{ emp.value.GPFlastinst }}</td>
+        <td>{{ emp.value.GPFlastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.GPFremarks }}</td>
+        <td>{{ emp.value.GPFstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.GPFstatus }}</td>
+
+        <td>{{ emp.value.OTHERloan }}</td>
+        <td>{{ emp.value.OTHERtype }}</td>
+        <td>{{ emp.value.OTHERloanamt }}</td>
+        <td>{{ emp.value.OTHERinstno }}</td>
+        <td>{{ emp.value.OTHERinstamt }}</td>
+        <td>{{ emp.value.OTHERbal }}</td>
+        <td>{{ emp.value.OTHERlastinst }}</td>
+        <td>{{ emp.value.OTHERlastdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.OTHERremarks }}</td>
+        <td>{{ emp.value.OTHERstartdate | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ emp.value.OTHERstatus }}</td>
+
+        <td>{{ emp.value.gpfsub }}</td>
+        <td>{{ emp.value.gpfrec }}</td>
+        <td>{{ emp.value.npssub }}</td>
+        <td>{{ emp.value.npsrec }}</td>
+        <td>{{ emp.value.it }}</td>
+        <td>{{ emp.value.cess }}</td>
+        <td>{{ emp.value.misc1 }}</td>
+        <td>{{ emp.value.homerent }}</td>
+        <td>{{ emp.value.water }}</td>
+        <td>{{ emp.value.elec }}</td>
+        <td>{{ emp.value.cghs }}</td>
+        <td>{{ emp.value.misc1Alw }}</td>
+
+        <td>{{ emp.value.dlomi }}</td>
+        <td>{{ emp.value.welfare }}</td>
+        <td>{{ emp.value.DRDLEcss }}</td>
+        <td>{{ emp.value.cqa }}</td>
+        <td>{{ emp.value.OfrMisc1 }}</td>
+        <td>{{ emp.value.OffRecvdate | date: "dd-MMM-yyyy" }}</td>
+
+        <td>{{ emp.value.grosspay }}</td>
+        <td>{{ emp.value.tdeduction }}</td>
+        <td>{{ emp.value.netpay }}</td>
+        <td>{{ emp.value.toffcrec }}</td>
+        <td>{{ emp.value.tobnkamt }}</td> 
+
+          </tr>
+       </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card-content>
+</mat-card>
+   <div>
+   <mat-paginator [length]="totalEmps" [pageSize]="empsPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+    *ngIf="emps.length > 0"></mat-paginator>
+    <p class="info-text mat-body-1" *ngIf="emps.length <= 0 && !isLoading">No employee type added yet!</p>
+  </div> 
+ 
+<button mat-raised-button color="primary" position= "centre" routerLink="/createemp" routerLinkActive="mat-accent">ADD NEW EMPLOYEE</button>
+--> 

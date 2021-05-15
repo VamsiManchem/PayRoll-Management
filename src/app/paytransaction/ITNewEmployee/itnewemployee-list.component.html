@@ -1,0 +1,89 @@
+
+<div style="text-align:center"> 
+    <h1>
+      IT NEW EMPLOYEE GROSS AND SAVINGS DETAILS
+    </h1>
+  </div>
+  
+   <div >
+     <table class="mat-elevation-z8">
+          <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Employee Number</th>
+                <th>Employee Name</th>
+                <th>Desig</th>
+                <th>Employee Type</th>
+                <th>Group</th>
+                <th >Basic Type</th>
+        
+                <th>Pay-Level</th>
+                <th>Index No</th>
+                <th>GPF</th>
+                <th>CPS_REC</th>
+                <th>Basic</th>
+                <th>CGEGIS</th>
+                <th>DA</th>
+                <th>CGHS</th>
+                <th>HRA</th>
+                <th>IT_REC</th>
+                <th>TA</th>
+                <th>IT_CESS</th>
+                <th>DAonTA</th>
+                <th>PT_REC</th>
+                <th>Effec Date</th>
+
+                <th>Action</th>
+          </tr>
+          
+        <tbody>
+          <tr *ngFor="let itnewemp of itnewemps">
+
+
+            <td>{{ itnewemp.month }}</td>
+            <td>{{ itnewemp.year }}</td>  
+            <td>{{ itnewemp.empno }}</td>        
+            <td>{{ itnewemp.empname }}</td>
+            <td>{{ itnewemp.designation }}</td>
+            <td>{{ itnewemp.emptype }}</td>
+            <td>{{ itnewemp.group }}</td>
+            <td>{{ itnewemp.basictype }}</td>
+            
+            <td>{{ itnewemp.paylevel }}</td>
+            <td>{{ itnewemp.cellno }}</td>
+            <td>{{ itnewemp.gpf }}</td>
+            <td>{{ itnewemp.cpsrec }}</td>
+            <td>{{ itnewemp.basic }}</td>
+            <td>{{ itnewemp.cgegis }}</td>
+            <td>{{ itnewemp.da }}</td>
+            <td>{{ itnewemp.cghs }}</td>
+            <td>{{ itnewemp.hra }}</td>
+            <td>{{ itnewemp.itrec }}</td>
+            <td>{{ itnewemp. ta }}</td>
+            <td>{{ itnewemp.itcess }}</td>
+            <td>{{ itnewemp.daonta }}</td>
+            <td>{{ itnewemp.ptrec }}</td>
+            <td>{{ itnewemp.effectivedate           }}</td>
+            
+            <td *ngIf="userIsAuthenticated">
+              <button type="button" color="accent" [routerLink]="['/edititnewemp', itnewemp.id]">EDIT</button>
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+     <mat-paginator [length]="totalItnewemps" [pageSize]="itnewempsPerPage" [pageSizeOptions]="PageSizeOptions" (page)="onChangedPage($event)"
+      *ngIf="itnewemps.length > 0"></mat-paginator>
+      <p class="info-text mat-body-1" *ngIf="itnewemps.length <= 0 && !isLoading">No IT New Employee added yet!</p>
+    </div> 
+  
+    <button mat-raised-button color="primary" position= "centre" routerLink="/addnewemployee" routerLinkActive="mat-accent">ADD IT NEW EMPLOYEE</button>
+    <button type="button" color="accent" style="margin-left:1%" [routerLink]="['/dashboard']">BACK</button>
+  
+  
+  
+  
+  
+  
