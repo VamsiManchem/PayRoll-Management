@@ -1,6 +1,13 @@
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+Experss version 4.17.1
+
+## Node
+
+## MongoDB
+
+MongoDB version 5.11.17
 
 ## Development server
 
